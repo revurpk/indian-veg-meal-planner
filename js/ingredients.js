@@ -61,6 +61,8 @@ const INGREDIENTS = {
   spring_onion: { name: "Spring onion", cat: "Vegetables", kcal: 32, protein: 1.8, carbs: 7.3, fat: 0.2, fiber: 2.6 },
   pumpkin: { name: "Pumpkin", cat: "Vegetables", kcal: 26, protein: 1, carbs: 6.5, fat: 0.1, fiber: 0.5 },
   bottle_gourd: { name: "Bottle gourd (lauki)", cat: "Vegetables", kcal: 14, protein: 0.6, carbs: 3.4, fat: 0, fiber: 0.5 },
+  drumstick: { name: "Drumstick (moringa)", cat: "Vegetables", kcal: 37, protein: 2.1, carbs: 8.5, fat: 0.2, fiber: 4.8 },
+  raw_banana: { name: "Raw banana/plantain", cat: "Vegetables", kcal: 122, protein: 1.3, carbs: 31.9, fat: 0.3, fiber: 2.3 },
 
   // Dairy
   paneer: { name: "Paneer", cat: "Dairy", kcal: 265, protein: 18.3, carbs: 1.2, fat: 20.8, fiber: 0 },
@@ -102,6 +104,9 @@ const INGREDIENTS = {
   black_pepper: { name: "Black pepper", cat: "Spices", kcal: 251, protein: 10.4, carbs: 64, fat: 3.3, fiber: 25.3 },
   chaat_masala: { name: "Chaat masala", cat: "Spices", kcal: 300, protein: 8, carbs: 60, fat: 4, fiber: 20 },
   hing: { name: "Asafoetida (hing)", cat: "Spices", kcal: 297, protein: 4, carbs: 68, fat: 1.1, fiber: 4.1 },
+  sambar_powder: { name: "Sambar powder", cat: "Spices", kcal: 325, protein: 14, carbs: 55, fat: 8, fiber: 30 },
+  rasam_powder: { name: "Rasam powder", cat: "Spices", kcal: 320, protein: 13, carbs: 52, fat: 9, fiber: 32 },
+  cardamom: { name: "Cardamom (ground)", cat: "Spices", kcal: 311, protein: 10.8, carbs: 68.5, fat: 6.7, fiber: 28 },
   salt: { name: "Salt", cat: "Spices", kcal: 0, protein: 0, carbs: 0, fat: 0, fiber: 0 },
   baking_soda: { name: "Baking soda / eno", cat: "Spices", kcal: 0, protein: 0, carbs: 0, fat: 0, fiber: 0 },
   tamarind_pulp: { name: "Tamarind pulp", cat: "Spices", kcal: 239, protein: 2.8, carbs: 62.5, fat: 0.6, fiber: 5.1 },
