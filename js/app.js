@@ -65,16 +65,32 @@
   }
 
   // ---------------- Storage ----------------
-  function loadPlan() {
-    try {
-      const raw = localStorage.getItem(STORAGE_PLAN);
-      if (raw) return JSON.parse(raw);
-    } catch (e) { /* ignore corrupt storage */ }
+  function emptyPlan() {
     const plan = {};
     DAYS.forEach((d) => {
       plan[d] = {};
       SLOTS.forEach((s) => (plan[d][s] = null));
     });
+    return plan;
+  }
+
+  // Rebuilds onto a known-good shape so a missing/corrupted/hand-edited
+  // localStorage value can't leave `plan[day][slot]` undefined at render time,
+  // and only recipe ids that actually exist in RECIPES are ever accepted.
+  function loadPlan() {
+    const plan = emptyPlan();
+    try {
+      const raw = localStorage.getItem(STORAGE_PLAN);
+      const parsed = raw ? JSON.parse(raw) : null;
+      if (parsed && typeof parsed === "object") {
+        DAYS.forEach((d) => {
+          SLOTS.forEach((s) => {
+            const val = parsed[d] && parsed[d][s];
+            if (typeof val === "string" && RECIPE_BY_ID[val]) plan[d][s] = val;
+          });
+        });
+      }
+    } catch (e) { /* ignore corrupt storage, fall back to empty plan */ }
     return plan;
   }
   let plan = loadPlan();
@@ -85,8 +101,11 @@
   function loadChecked() {
     try {
       const raw = localStorage.getItem(STORAGE_CHECKED);
-      if (raw) return new Set(JSON.parse(raw));
-    } catch (e) { /* ignore */ }
+      const parsed = raw ? JSON.parse(raw) : null;
+      if (Array.isArray(parsed)) {
+        return new Set(parsed.filter((id) => typeof id === "string" && INGREDIENTS[id]));
+      }
+    } catch (e) { /* ignore corrupt storage */ }
     return new Set();
   }
   let checkedItems = loadChecked();
@@ -398,8 +417,7 @@
 
   document.getElementById("clearPlanner").addEventListener("click", () => {
     if (!confirm("Clear the entire week's plan?")) return;
-    plan = loadPlan();
-    DAYS.forEach((d) => SLOTS.forEach((s) => (plan[d][s] = null)));
+    plan = emptyPlan();
     savePlan();
     renderPlanner();
     renderShoppingList();
