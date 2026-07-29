@@ -63,6 +63,8 @@ const INGREDIENTS = {
   bottle_gourd: { name: "Bottle gourd (lauki)", cat: "Vegetables", kcal: 14, protein: 0.6, carbs: 3.4, fat: 0, fiber: 0.5 },
   drumstick: { name: "Drumstick (moringa)", cat: "Vegetables", kcal: 37, protein: 2.1, carbs: 8.5, fat: 0.2, fiber: 4.8 },
   raw_banana: { name: "Raw banana/plantain", cat: "Vegetables", kcal: 122, protein: 1.3, carbs: 31.9, fat: 0.3, fiber: 2.3 },
+  gongura: { name: "Gongura (sorrel leaves)", cat: "Vegetables", kcal: 45, protein: 2, carbs: 7.6, fat: 0.6, fiber: 2 },
+  dosakai: { name: "Dosakai (Indian yellow cucumber)", cat: "Vegetables", kcal: 20, protein: 0.8, carbs: 4.3, fat: 0.2, fiber: 0.9 },
 
   // Dairy
   paneer: { name: "Paneer", cat: "Dairy", kcal: 265, protein: 18.3, carbs: 1.2, fat: 20.8, fiber: 0 },

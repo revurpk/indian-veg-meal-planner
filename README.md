@@ -4,6 +4,9 @@ A standalone, installable weekly meal planner built around quick, nutritious
 Indian vegetarian recipes for busy professionals. No meat, fish, or egg —
 dairy is used freely. No build step, no external runtime dependencies.
 
+Binding project rules (vegetarian-only, safety/security review before every
+commit, licensing) are in [CONSTITUTION.md](CONSTITUTION.md).
+
 ## Quick start
 
 ```
@@ -16,12 +19,13 @@ real HTTP origin, so `http://` is recommended over `file://`).
 
 ## Features
 
-- **65 recipes** across soups, mains, pasta, bread-based dishes, snacks and
+- **70 recipes** across soups, mains, pasta, bread-based dishes, snacks and
   desserts — all original recipe text. Includes pan-Indian staples (samosa,
-  chapati, poori) and South Indian regional dishes from Andhra Pradesh,
-  Tamil Nadu, Kerala, Karnataka and Maharashtra (idli, dosa, pesarattu,
-  sambar, rasam, pulusu, avial, bisi bele bath, ven pongal, misal pav, vada
-  pav, and coconut/tomato/peanut chutneys).
+  chapati, poori), Indo-Chinese vegetable fried rice, and South Indian
+  regional dishes from Andhra Pradesh, Tamil Nadu, Kerala, Karnataka and
+  Maharashtra (idli, dosa, pesarattu, sambar, rasam, pulusu, avial, bisi
+  bele bath, ven pongal, misal pav, vada pav, gongura/dosakai/sesame-tamarind
+  pacchadis, and coconut/tomato/peanut chutneys).
 - **Ingredient nutrition database** (`js/ingredients.js`) with calories,
   protein, carbs, fat and fiber per 100 g; every recipe's nutrition is
   computed live from its ingredient list and serving count.
