@@ -1,4 +1,5 @@
-/* Recipe database. Every recipe is 100% vegetarian — no meat, fish, or
+/* Copyright 2026 Pradyumna Revur — Apache-2.0 (see LICENSE)
+   Recipe database. Every recipe is 100% vegetarian — no meat, fish, or
    egg; dairy is used freely. Ingredient quantities carry both a
    human-readable qty and a gram weight so nutrition can be computed from
    js/ingredients.js. Steps and recipe text are original. */

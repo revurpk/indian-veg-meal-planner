@@ -1,3 +1,4 @@
+/* Copyright 2026 Pradyumna Revur — Apache-2.0 (see LICENSE) */
 (function () {
   "use strict";
 

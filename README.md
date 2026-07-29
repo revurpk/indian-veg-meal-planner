@@ -62,3 +62,8 @@ python -m uv pip install --python .venv/Scripts/python.exe pillow
 Values are standard per-100g nutrition figures (not tied to any single
 copyrighted source) and are estimates — actual nutrition varies by brand,
 ripeness, and cooking technique.
+
+## License
+
+Copyright 2026 Pradyumna Revur. Released under the
+[Apache License 2.0](LICENSE); see [NOTICE](NOTICE) for attribution.

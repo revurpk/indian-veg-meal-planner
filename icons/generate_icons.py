@@ -1,4 +1,6 @@
-"""Draws the app icon directly with Pillow (no SVG/cairo dependency) at 4x
+"""Copyright 2026 Pradyumna Revur — Apache-2.0 (see LICENSE)
+
+Draws the app icon directly with Pillow (no SVG/cairo dependency) at 4x
 supersampling, then downsamples to each target size for clean edges."""
 from PIL import Image, ImageDraw
 import math

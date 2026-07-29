@@ -1,4 +1,5 @@
-/* Ingredient nutrition database. Values are per 100 g (or 100 ml for
+/* Copyright 2026 Pradyumna Revur — Apache-2.0 (see LICENSE)
+   Ingredient nutrition database. Values are per 100 g (or 100 ml for
    liquids) of the raw/base ingredient as typically purchased — commonly
    published nutrition-table figures, not tied to any single copyrighted
    source. kcal/protein/carbs/fat/fiber are grams unless kcal. */
