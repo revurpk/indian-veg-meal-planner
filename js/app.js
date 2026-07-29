@@ -12,8 +12,14 @@
   ];
   const CATEGORY_EMOJI = Object.fromEntries(CATEGORIES.map((c) => [c.id, c.emoji]));
 
+  const TIME_FILTERS = [
+    { id: "all", label: "⏱ Any time", max: Infinity },
+    { id: "15", label: "≤ 15 min", max: 15 },
+    { id: "30", label: "≤ 30 min", max: 30 },
+    { id: "45", label: "≤ 45 min", max: 45 },
+  ];
+
   const QUICK_FILTERS = [
-    { id: "quick", label: "⚡ Quick (≤20 min)", test: (r) => r.time.prep + r.time.cook <= 20 },
     { id: "high-protein", label: "💪 High-Protein", test: (r) => r.tags.includes("high-protein") },
     { id: "no-cook", label: "🧊 No-Cook", test: (r) => r.tags.some((t) => t.startsWith("no-cook")) },
     { id: "make-ahead", label: "📦 Make-Ahead", test: (r) => r.tags.includes("make-ahead") },
@@ -30,6 +36,7 @@
   const RECIPE_BY_ID = Object.fromEntries(RECIPES.map((r) => [r.id, r]));
 
   let activeCategory = "all";
+  let activeTimeFilter = "all";
   let activeTagFilters = new Set();
   let searchQuery = "";
   let cellPickerTarget = null; // {day, slot}
@@ -98,8 +105,10 @@
   }
 
   function getFilteredRecipes() {
+    const timeFilter = TIME_FILTERS.find((f) => f.id === activeTimeFilter);
     return RECIPES.filter((r) => {
       if (activeCategory !== "all" && r.category !== activeCategory) return false;
+      if (timeFilter && r.time.prep + r.time.cook > timeFilter.max) return false;
       if (!recipeMatchesSearch(r, searchQuery)) return false;
       for (const tagId of activeTagFilters) {
         const filter = QUICK_FILTERS.find((f) => f.id === tagId);
@@ -121,6 +130,23 @@
       btn.addEventListener("click", () => {
         activeCategory = c.id;
         renderCategoryFilters();
+        renderRecipeGrid();
+      });
+      el.appendChild(btn);
+    });
+  }
+
+  function renderTimeFilters() {
+    const el = document.getElementById("timeFilters");
+    el.innerHTML = "";
+    TIME_FILTERS.forEach((f) => {
+      const btn = document.createElement("button");
+      btn.className = "chip" + (activeTimeFilter === f.id ? " active" : "");
+      btn.type = "button";
+      btn.textContent = f.label;
+      btn.addEventListener("click", () => {
+        activeTimeFilter = f.id;
+        renderTimeFilters();
         renderRecipeGrid();
       });
       el.appendChild(btn);
@@ -505,6 +531,7 @@
 
   // ---------------- Init ----------------
   renderCategoryFilters();
+  renderTimeFilters();
   renderTagFilters();
   renderRecipeGrid();
   renderPlanner();

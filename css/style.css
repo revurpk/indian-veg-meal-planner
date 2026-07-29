@@ -130,10 +130,11 @@ main { max-width: 1100px; margin: 0 auto; padding: 16px; }
 /* ---------- Modal ---------- */
 .modal-overlay {
   position: fixed; inset: 0; background: rgba(20, 12, 4, 0.5); z-index: 100;
-  display: flex; align-items: flex-end; justify-content: center;
+  display: none; align-items: flex-end; justify-content: center;
 }
+.modal-overlay:not([hidden]) { display: flex; }
 @media (min-width: 640px) {
-  .modal-overlay { align-items: center; }
+  .modal-overlay:not([hidden]) { align-items: center; }
 }
 .modal {
   background: var(--page-bg); width: 100%; max-width: 640px; max-height: 92vh; overflow-y: auto;
