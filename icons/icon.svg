@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FF9A3C"/>
+      <stop offset="1" stop-color="#E8590C"/>
+    </linearGradient>
+    <linearGradient id="bowl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFDF7"/>
+      <stop offset="1" stop-color="#FFEFD6"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+
+  <!-- steam -->
+  <g stroke="#FFF3E0" stroke-width="18" stroke-linecap="round" fill="none" opacity="0.9">
+    <path d="M196 150 C176 120, 208 100, 192 68">
+      <animate attributeName="d" values="M196 150 C176 120, 208 100, 192 68;M196 150 C216 122, 184 96, 200 66;M196 150 C176 120, 208 100, 192 68" dur="4s" repeatCount="indefinite"/>
+    </path>
+    <path d="M256 150 C236 116, 268 94, 252 60">
+      <animate attributeName="d" values="M256 150 C236 116, 268 94, 252 60;M256 150 C276 118, 244 90, 260 58;M256 150 C236 116, 268 94, 252 60" dur="4s" repeatCount="indefinite"/>
+    </path>
+    <path d="M316 150 C296 120, 328 100, 312 68">
+      <animate attributeName="d" values="M316 150 C296 120, 328 100, 312 68;M316 150 C336 122, 304 96, 320 66;M316 150 C296 120, 328 100, 312 68" dur="4s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- bowl -->
+  <path d="M120 230 h272 a136 136 0 0 1 -272 0 z" fill="url(#bowl)" stroke="#C2410C" stroke-width="10"/>
+  <ellipse cx="256" cy="230" rx="136" ry="30" fill="#FFF9EE" stroke="#C2410C" stroke-width="10"/>
+
+  <!-- veg pieces in bowl -->
+  <circle cx="205" cy="222" r="16" fill="#E8590C"/>
+  <circle cx="256" cy="214" r="18" fill="#2F9E44"/>
+  <circle cx="308" cy="224" r="15" fill="#F2C037"/>
+  <path d="M228 232 q14 -18 32 0" stroke="#2F9E44" stroke-width="9" fill="none" stroke-linecap="round"/>
+
+  <!-- leaf accent -->
+  <path d="M352 356 C392 356 420 384 420 420 C384 420 356 392 356 352 Z" fill="#2F9E44"/>
+  <path d="M360 412 C374 396 388 384 398 376" stroke="#1B6E2E" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+  <!-- base/stand -->
+  <path d="M150 396 h212 l-18 40 h-176 z" fill="#FFEFD6" stroke="#C2410C" stroke-width="10"/>
+</svg>
