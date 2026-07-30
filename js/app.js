@@ -66,11 +66,12 @@
   }
 
   // ---------------- Storage ----------------
+  // plan[day][slot] is an array of recipe ids — a slot can hold more than one dish.
   function emptyPlan() {
     const plan = {};
     DAYS.forEach((d) => {
       plan[d] = {};
-      SLOTS.forEach((s) => (plan[d][s] = null));
+      SLOTS.forEach((s) => (plan[d][s] = []));
     });
     return plan;
   }
@@ -78,6 +79,8 @@
   // Rebuilds onto a known-good shape so a missing/corrupted/hand-edited
   // localStorage value can't leave `plan[day][slot]` undefined at render time,
   // and only recipe ids that actually exist in RECIPES are ever accepted.
+  // Also migrates the older one-recipe-per-slot format (a plain string,
+  // or null) into the current array-per-slot format.
   function loadPlan() {
     const plan = emptyPlan();
     try {
@@ -87,7 +90,8 @@
         DAYS.forEach((d) => {
           SLOTS.forEach((s) => {
             const val = parsed[d] && parsed[d][s];
-            if (typeof val === "string" && RECIPE_BY_ID[val]) plan[d][s] = val;
+            const ids = Array.isArray(val) ? val : val ? [val] : [];
+            plan[d][s] = ids.filter((id) => typeof id === "string" && RECIPE_BY_ID[id]);
           });
         });
       }
@@ -291,7 +295,7 @@
     document.getElementById("confirmAddToPlan").addEventListener("click", () => {
       const day = document.getElementById("pickDay").value;
       const slot = document.getElementById("pickSlot").value;
-      plan[day][slot] = recipe.id;
+      plan[day][slot].push(recipe.id);
       savePlan();
       modal.hidden = true;
       document.getElementById("recipeModal").hidden = true;
@@ -328,7 +332,7 @@
       grid.appendChild(
         buildRecipeCard(r, (recipe) => {
           const { day, slot } = cellPickerTarget;
-          plan[day][slot] = recipe.id;
+          plan[day][slot].push(recipe.id);
           savePlan();
           document.getElementById("cellPicker").hidden = true;
           showToast(`Added "${recipe.name}" to ${day} ${slot}`);
@@ -359,31 +363,36 @@
 
       let dayKcal = 0;
       SLOTS.forEach((slot) => {
-        const recipeId = plan[day][slot];
-        if (recipeId && RECIPE_BY_ID[recipeId]) {
-          dayKcal += computeNutrition(RECIPE_BY_ID[recipeId]).perServing.kcal;
-        }
+        (plan[day][slot] || []).forEach((recipeId) => {
+          if (RECIPE_BY_ID[recipeId]) dayKcal += computeNutrition(RECIPE_BY_ID[recipeId]).perServing.kcal;
+        });
       });
       weekKcal += dayKcal;
 
       const slotsHtml = SLOTS.map((slot) => {
-        const recipeId = plan[day][slot];
-        const recipe = recipeId ? RECIPE_BY_ID[recipeId] : null;
+        const recipeIds = plan[day][slot] || [];
+        const itemsHtml = recipeIds
+          .map((recipeId, index) => {
+            const recipe = RECIPE_BY_ID[recipeId];
+            if (!recipe) return "";
+            return `
+              <div class="planner-cell-recipe">
+                <span class="planner-cell-recipe-name" data-action="view" data-recipe="${recipe.id}">${CATEGORY_EMOJI[recipe.category] || ""} ${recipe.name}</span>
+                <div class="planner-cell-recipe-row">
+                  <span class="recipe-card-kcal">${fmt(computeNutrition(recipe).perServing.kcal)} kcal</span>
+                  <button class="remove-btn" type="button" data-action="remove" data-day="${day}" data-slot="${slot}" data-index="${index}">Remove ✕</button>
+                </div>
+              </div>`;
+          })
+          .join("");
+        const addLabel = recipeIds.length ? "+ Add another" : "+ Add";
+        const addClass = recipeIds.length ? "planner-cell-add planner-cell-add-more" : "planner-cell-add";
         return `
           <div>
             <div class="planner-slot-label">${slot}</div>
-            <div class="planner-cell ${recipe ? "filled" : ""}" data-day="${day}" data-slot="${slot}">
-              ${
-                recipe
-                  ? `<div class="planner-cell-recipe">
-                      <span class="planner-cell-recipe-name" data-action="view" data-recipe="${recipe.id}">${CATEGORY_EMOJI[recipe.category] || ""} ${recipe.name}</span>
-                      <div class="planner-cell-recipe-row">
-                        <span class="recipe-card-kcal">${fmt(computeNutrition(recipe).perServing.kcal)} kcal</span>
-                        <button class="remove-btn" type="button" data-action="remove" data-day="${day}" data-slot="${slot}">Remove ✕</button>
-                      </div>
-                    </div>`
-                  : `<button class="planner-cell-add" type="button" data-action="add" data-day="${day}" data-slot="${slot}">+ Add</button>`
-              }
+            <div class="planner-cell ${recipeIds.length ? "filled" : ""}" data-day="${day}" data-slot="${slot}">
+              ${itemsHtml}
+              <button class="${addClass}" type="button" data-action="add" data-day="${day}" data-slot="${slot}">${addLabel}</button>
             </div>
           </div>`;
       }).join("");
@@ -402,7 +411,7 @@
     );
     grid.querySelectorAll('[data-action="remove"]').forEach((btn) =>
       btn.addEventListener("click", () => {
-        plan[btn.dataset.day][btn.dataset.slot] = null;
+        plan[btn.dataset.day][btn.dataset.slot].splice(Number(btn.dataset.index), 1);
         savePlan();
         renderPlanner();
         renderShoppingList();
@@ -429,8 +438,9 @@
     const items = [];
     DAYS.forEach((day) =>
       SLOTS.forEach((slot) => {
-        const id = plan[day][slot];
-        if (id && RECIPE_BY_ID[id]) items.push(RECIPE_BY_ID[id]);
+        (plan[day][slot] || []).forEach((id) => {
+          if (RECIPE_BY_ID[id]) items.push(RECIPE_BY_ID[id]);
+        });
       })
     );
     return items;
@@ -535,12 +545,12 @@
       lines.push(day.toUpperCase());
       let dayKcal = 0;
       SLOTS.forEach((slot) => {
-        const recipeId = plan[day][slot];
-        const recipe = recipeId ? RECIPE_BY_ID[recipeId] : null;
-        if (recipe) {
-          const kcal = computeNutrition(recipe).perServing.kcal;
-          dayKcal += kcal;
-          lines.push(`  ${slot}: ${recipe.name} (${fmt(kcal)} kcal)`);
+        const recipes = (plan[day][slot] || []).map((id) => RECIPE_BY_ID[id]).filter(Boolean);
+        if (recipes.length) {
+          const kcals = recipes.map((r) => computeNutrition(r).perServing.kcal);
+          dayKcal += kcals.reduce((a, b) => a + b, 0);
+          const names = recipes.map((r, i) => `${r.name} (${fmt(kcals[i])} kcal)`).join(" + ");
+          lines.push(`  ${slot}: ${names}`);
         } else {
           lines.push(`  ${slot}: —`);
         }
