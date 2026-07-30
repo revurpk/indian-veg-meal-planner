@@ -572,12 +572,27 @@
     return lines.join("\n").trim();
   }
 
+  // On mobile, handing text to the OS share sheet (Notes, Reminders, WhatsApp,
+  // AirDrop, ...) is far more useful than a file dropped in Downloads. Falls
+  // back to a plain download wherever Web Share isn't available.
+  async function shareOrDownload(filename, title, text) {
+    if (navigator.share) {
+      try {
+        await navigator.share({ title, text });
+        return;
+      } catch (err) {
+        if (err && err.name === "AbortError") return; // user cancelled — don't also download
+      }
+    }
+    downloadTextFile(filename, text);
+  }
+
   document.getElementById("exportPlanner").addEventListener("click", () => {
-    downloadTextFile("weekly-meal-plan.txt", buildPlanExportText());
+    shareOrDownload("weekly-meal-plan.txt", "Weekly Meal Plan", buildPlanExportText());
   });
   document.getElementById("printPlanner").addEventListener("click", () => window.print());
   document.getElementById("exportShopping").addEventListener("click", () => {
-    downloadTextFile("shopping-list.txt", buildShoppingExportText());
+    shareOrDownload("shopping-list.txt", "Shopping List", buildShoppingExportText());
   });
   document.getElementById("printShopping").addEventListener("click", () => window.print());
 
