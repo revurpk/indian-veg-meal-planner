@@ -190,6 +190,7 @@ main { max-width: 1100px; margin: 0 auto; padding: 16px; }
 
 /* ---------- Planner ---------- */
 .planner-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+.toolbar-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .week-summary { font-size: 0.85rem; color: var(--text-muted); }
 .week-summary b { color: var(--orange); }
 
@@ -234,4 +235,14 @@ main { max-width: 1100px; margin: 0 auto; padding: 16px; }
 @media (max-width: 480px) {
   .brand h1 { font-size: 0.92rem; }
   .tab-btn { padding: 6px 10px; font-size: 0.78rem; }
+}
+
+/* ---------- Print (Export → Print / Save as PDF) ---------- */
+@media print {
+  .no-print, .topbar, .search-bar, .filter-row, .modal-overlay, .toast, .install-btn { display: none !important; }
+  body, .view { background: #fff; color: #000; }
+  main { max-width: none; padding: 0; }
+  .planner-day, .shopping-item, .recipe-card { box-shadow: none; border: 1px solid #999; }
+  .planner-cell { background: #fff; }
+  a[href]:after { content: none !important; }
 }

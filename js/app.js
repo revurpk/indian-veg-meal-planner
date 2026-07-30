@@ -436,19 +436,9 @@
     return items;
   }
 
-  function renderShoppingList() {
-    const container = document.getElementById("shoppingList");
-    const empty = document.getElementById("shoppingEmpty");
-    const recipes = getPlannedRecipes();
-    container.innerHTML = "";
-
-    if (recipes.length === 0) {
-      empty.hidden = false;
-      return;
-    }
-    empty.hidden = true;
-
-    const aggregate = {}; // id -> {grams, recipes:Set}
+  // Shared by renderShoppingList and the text export so both stay in sync.
+  function groupShoppingItemsByCategory(recipes) {
+    const aggregate = {}; // id -> {grams, recipeNames:Set}
     recipes.forEach((r) =>
       r.ingredients.forEach((ing) => {
         if (!aggregate[ing.id]) aggregate[ing.id] = { grams: 0, recipeNames: new Set() };
@@ -464,16 +454,38 @@
       if (!byCategory[cat]) byCategory[cat] = [];
       byCategory[cat].push({ id, ...aggregate[id] });
     });
+    Object.keys(byCategory).forEach((cat) => {
+      byCategory[cat].sort((a, b) => (INGREDIENTS[a.id].name > INGREDIENTS[b.id].name ? 1 : -1));
+    });
+    return byCategory;
+  }
+
+  function qtyLabelFor(grams) {
+    return grams >= 1000 ? `${fmt(grams / 1000, 2)} kg` : `${fmt(grams)} g`;
+  }
+
+  function renderShoppingList() {
+    const container = document.getElementById("shoppingList");
+    const empty = document.getElementById("shoppingEmpty");
+    const recipes = getPlannedRecipes();
+    container.innerHTML = "";
+
+    if (recipes.length === 0) {
+      empty.hidden = false;
+      return;
+    }
+    empty.hidden = true;
+
+    const byCategory = groupShoppingItemsByCategory(recipes);
 
     Object.keys(byCategory).sort().forEach((cat) => {
       const group = document.createElement("div");
       group.className = "shopping-group";
       const itemsHtml = byCategory[cat]
-        .sort((a, b) => (INGREDIENTS[a.id].name > INGREDIENTS[b.id].name ? 1 : -1))
         .map((item) => {
           const data = INGREDIENTS[item.id];
           const checked = checkedItems.has(item.id);
-          const qtyLabel = item.grams >= 1000 ? `${fmt(item.grams / 1000, 2)} kg` : `${fmt(item.grams)} g`;
+          const qtyLabel = qtyLabelFor(item.grams);
           return `
             <label class="shopping-item ${checked ? "checked" : ""}">
               <input type="checkbox" data-ing="${item.id}" ${checked ? "checked" : ""}>
@@ -502,6 +514,72 @@
     saveChecked();
     renderShoppingList();
   });
+
+  // ---------------- Export ----------------
+  function downloadTextFile(filename, content) {
+    const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  function buildPlanExportText() {
+    const lines = ["WEEKLY MEAL PLAN", `Exported ${new Date().toLocaleDateString()}`, ""];
+    let weekKcal = 0;
+    DAYS.forEach((day) => {
+      lines.push(day.toUpperCase());
+      let dayKcal = 0;
+      SLOTS.forEach((slot) => {
+        const recipeId = plan[day][slot];
+        const recipe = recipeId ? RECIPE_BY_ID[recipeId] : null;
+        if (recipe) {
+          const kcal = computeNutrition(recipe).perServing.kcal;
+          dayKcal += kcal;
+          lines.push(`  ${slot}: ${recipe.name} (${fmt(kcal)} kcal)`);
+        } else {
+          lines.push(`  ${slot}: —`);
+        }
+      });
+      weekKcal += dayKcal;
+      lines.push(`  Day total: ${fmt(dayKcal)} kcal`, "");
+    });
+    lines.push(`Week total: ${fmt(weekKcal)} kcal`);
+    return lines.join("\n");
+  }
+
+  function buildShoppingExportText() {
+    const recipes = getPlannedRecipes();
+    const lines = ["SHOPPING LIST", `Exported ${new Date().toLocaleDateString()}`, ""];
+    if (recipes.length === 0) {
+      lines.push("Your weekly plan is empty — add recipes from the Planner tab first.");
+      return lines.join("\n");
+    }
+    const byCategory = groupShoppingItemsByCategory(recipes);
+    Object.keys(byCategory).sort().forEach((cat) => {
+      lines.push(cat.toUpperCase());
+      byCategory[cat].forEach((item) => {
+        const data = INGREDIENTS[item.id];
+        const box = checkedItems.has(item.id) ? "[x]" : "[ ]";
+        lines.push(`  ${box} ${data.name} — ${qtyLabelFor(item.grams)}`);
+      });
+      lines.push("");
+    });
+    return lines.join("\n").trim();
+  }
+
+  document.getElementById("exportPlanner").addEventListener("click", () => {
+    downloadTextFile("weekly-meal-plan.txt", buildPlanExportText());
+  });
+  document.getElementById("printPlanner").addEventListener("click", () => window.print());
+  document.getElementById("exportShopping").addEventListener("click", () => {
+    downloadTextFile("shopping-list.txt", buildShoppingExportText());
+  });
+  document.getElementById("printShopping").addEventListener("click", () => window.print());
 
   // ---------------- Tabs ----------------
   document.getElementById("tabs").addEventListener("click", (e) => {

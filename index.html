@@ -52,17 +52,25 @@
   </section>
 
   <section id="view-planner" class="view">
-    <div class="planner-toolbar">
+    <div class="planner-toolbar no-print">
       <div id="weekNutritionSummary" class="week-summary"></div>
-      <button id="clearPlanner" class="ghost-btn" type="button">Clear week</button>
+      <div class="toolbar-actions">
+        <button id="exportPlanner" class="ghost-btn" type="button">⬇ Export</button>
+        <button id="printPlanner" class="ghost-btn" type="button">🖨 Print</button>
+        <button id="clearPlanner" class="ghost-btn" type="button">Clear week</button>
+      </div>
     </div>
     <div id="plannerGrid" class="planner-grid"></div>
   </section>
 
   <section id="view-shopping" class="view">
-    <div class="shopping-toolbar">
+    <div class="shopping-toolbar no-print">
       <p class="hint">Aggregated from every recipe in your weekly plan.</p>
-      <button id="clearShoppingChecks" class="ghost-btn" type="button">Uncheck all</button>
+      <div class="toolbar-actions">
+        <button id="exportShopping" class="ghost-btn" type="button">⬇ Export</button>
+        <button id="printShopping" class="ghost-btn" type="button">🖨 Print</button>
+        <button id="clearShoppingChecks" class="ghost-btn" type="button">Uncheck all</button>
+      </div>
     </div>
     <div id="shoppingList" class="shopping-list"></div>
     <p id="shoppingEmpty" class="empty-state" hidden>Your weekly plan is empty — add recipes from the Planner tab to build a shopping list.</p>
