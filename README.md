@@ -19,7 +19,7 @@ real HTTP origin, so `http://` is recommended over `file://`).
 
 ## Features
 
-- **98 recipes** across soups, mains, pasta, bread-based dishes, snacks,
+- **100 recipes** across soups, mains, pasta, bread-based dishes, snacks,
   desserts and podis — all original recipe text. Includes pan-Indian
   staples (samosa, chapati, poori), Indo-Chinese vegetable fried rice, and
   South Indian regional dishes from Andhra Pradesh, Tamil Nadu, Kerala,
