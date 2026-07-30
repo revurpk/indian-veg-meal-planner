@@ -1325,6 +1325,28 @@ const RECIPES = [
     ],
   },
   {
+    id: "minapa_chintapandu_pachadi", name: "Minapa (Urad Dal) Chintapandu Pacchadi", category: "snack",
+    tags: ["andhra", "tangy", "quick"], time: { prep: 8, cook: 8 }, servings: 4,
+    ingredients: [
+      { id: "urad_dal", qty: "1/2 cup, roasted", grams: 100 },
+      { id: "tamarind_pulp", qty: "2 tbsp", grams: 30 },
+      { id: "green_chili", qty: "2–3", grams: 12 },
+      { id: "garlic", qty: "2 cloves", grams: 6 },
+      { id: "chili_powder", qty: "1/2 tsp", grams: 1.5 },
+      { id: "jaggery", qty: "1 tsp", grams: 4 },
+      { id: "mustard_seeds", qty: "1/2 tsp", grams: 1.5 },
+      { id: "curry_leaves", qty: "1 sprig", grams: 2 },
+      { id: "oil", qty: "1 tbsp", grams: 14 },
+      { id: "salt", qty: "to taste", grams: 3 },
+    ],
+    steps: [
+      "Dry-roast the urad dal on low heat, stirring constantly, until deep golden and fragrant; cool completely.",
+      "Grind with tamarind pulp, green chilies, garlic, chili powder, jaggery and salt to a thick, coarse chutney, adding a splash of water as needed.",
+      "Temper mustard seeds and curry leaves in hot oil and stir through.",
+      "Serve with idli, dosa, or hot rice with a spoon of ghee.",
+    ],
+  },
+  {
     id: "andhra_tomato_pachadi", name: "Tomato Pacchadi (Andhra-style)", category: "snack",
     tags: ["andhra", "tangy", "quick"], time: { prep: 8, cook: 15 }, servings: 4,
     ingredients: [
