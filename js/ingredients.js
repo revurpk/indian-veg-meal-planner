@@ -65,6 +65,13 @@ const INGREDIENTS = {
   raw_banana: { name: "Raw banana/plantain", cat: "Vegetables", kcal: 122, protein: 1.3, carbs: 31.9, fat: 0.3, fiber: 2.3 },
   gongura: { name: "Gongura (sorrel leaves)", cat: "Vegetables", kcal: 45, protein: 2, carbs: 7.6, fat: 0.6, fiber: 2 },
   dosakai: { name: "Dosakai (Indian yellow cucumber)", cat: "Vegetables", kcal: 20, protein: 0.8, carbs: 4.3, fat: 0.2, fiber: 0.9 },
+  brinjal: { name: "Brinjal (eggplant/vankaya)", cat: "Vegetables", kcal: 25, protein: 1, carbs: 5.9, fat: 0.2, fiber: 3 },
+  chayote: { name: "Chayote squash", cat: "Vegetables", kcal: 19, protein: 0.8, carbs: 4.5, fat: 0.1, fiber: 1.7 },
+  chikkudukaya: { name: "Chikkudukaya (Indian broad beans)", cat: "Vegetables", kcal: 42, protein: 2.8, carbs: 7.4, fat: 0.2, fiber: 2.9 },
+  okra: { name: "Okra (bhindi)", cat: "Vegetables", kcal: 33, protein: 1.9, carbs: 7.5, fat: 0.2, fiber: 3.2 },
+  dondakaya: { name: "Dondakaya (ivy gourd/tindora)", cat: "Vegetables", kcal: 17, protein: 1.2, carbs: 3.2, fat: 0.3, fiber: 1.6 },
+  thotakoora: { name: "Thotakoora (amaranth leaves)", cat: "Vegetables", kcal: 23, protein: 2.5, carbs: 4, fat: 0.3, fiber: 2.1 },
+  beerakaya: { name: "Beerakaya (ridge gourd)", cat: "Vegetables", kcal: 17, protein: 1.2, carbs: 3.4, fat: 0.2, fiber: 1.1 },
 
   // Dairy
   paneer: { name: "Paneer", cat: "Dairy", kcal: 265, protein: 18.3, carbs: 1.2, fat: 20.8, fiber: 0 },
@@ -80,6 +87,7 @@ const INGREDIENTS = {
   // Oils & fats
   oil: { name: "Cooking oil", cat: "Fats", kcal: 884, protein: 0, carbs: 0, fat: 100, fiber: 0 },
   coconut_grated: { name: "Fresh coconut, grated", cat: "Fats", kcal: 354, protein: 3.3, carbs: 15.2, fat: 33.5, fiber: 9 },
+  dry_coconut: { name: "Dry coconut (desiccated)", cat: "Fats", kcal: 660, protein: 6.9, carbs: 23.7, fat: 64.5, fiber: 16.3 },
 
   // Nuts, seeds, dried fruit
   cashew: { name: "Cashew nuts", cat: "Nuts", kcal: 553, protein: 18.2, carbs: 30.2, fat: 43.9, fiber: 3.3 },

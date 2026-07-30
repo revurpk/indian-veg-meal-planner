@@ -19,14 +19,19 @@ real HTTP origin, so `http://` is recommended over `file://`).
 
 ## Features
 
-- **77 recipes** across soups, mains, pasta, bread-based dishes, snacks and
-  desserts — all original recipe text. Includes pan-Indian staples (samosa,
-  chapati, poori), Indo-Chinese vegetable fried rice, and South Indian
-  regional dishes from Andhra Pradesh, Tamil Nadu, Kerala, Karnataka and
-  Maharashtra (idli, dosa, pesarattu, sambar, rasam, pulusu, avial, bisi
-  bele bath, ven/chakkera/bellam pongal, punugulu, misal pav, vada pav,
-  vermicelli upma and payasam, rice payasam, gongura/dosakai/sesame-tamarind/
-  urad-dal-tamarind pacchadis, and coconut/tomato/peanut chutneys).
+- **98 recipes** across soups, mains, pasta, bread-based dishes, snacks,
+  desserts and podis — all original recipe text. Includes pan-Indian
+  staples (samosa, chapati, poori), Indo-Chinese vegetable fried rice, and
+  South Indian regional dishes from Andhra Pradesh, Tamil Nadu, Kerala,
+  Karnataka and Maharashtra: idli, dosa, pesarattu, sambar/onion sambar,
+  rasam, pulusu, avial, bisi bele bath, ven/chakkera/bellam pongal,
+  punugulu, misal pav, vada pav, vermicelli upma and payasam, rice
+  payasam, a full set of Andhra vegetable koora and dal pappu side
+  dishes (brinjal, carrot, beans, chayote, broad beans, okra, ivy gourd,
+  beetroot, bottle gourd, ridge gourd, spinach dal, amaranth dal, tomato
+  dal), gongura/dosakai/sesame-tamarind/urad-dal-tamarind pacchadis,
+  coconut/tomato/peanut chutneys, and dry spice-powder podis (kandi,
+  karvepaku, kobbera, nuvvula).
 - **Ingredient nutrition database** (`js/ingredients.js`) with calories,
   protein, carbs, fat and fiber per 100 g; every recipe's nutrition is
   computed live from its ingredient list and serving count.

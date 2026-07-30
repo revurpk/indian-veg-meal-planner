@@ -10,6 +10,7 @@
     { id: "bread", label: "Bread", emoji: "🥪" },
     { id: "snack", label: "Snacks", emoji: "🥗" },
     { id: "dessert", label: "Desserts", emoji: "🍮" },
+    { id: "podi", label: "Podis", emoji: "🧂" },
   ];
   const CATEGORY_EMOJI = Object.fromEntries(CATEGORIES.map((c) => [c.id, c.emoji]));
 
