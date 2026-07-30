@@ -19,12 +19,13 @@ real HTTP origin, so `http://` is recommended over `file://`).
 
 ## Features
 
-- **71 recipes** across soups, mains, pasta, bread-based dishes, snacks and
+- **77 recipes** across soups, mains, pasta, bread-based dishes, snacks and
   desserts — all original recipe text. Includes pan-Indian staples (samosa,
   chapati, poori), Indo-Chinese vegetable fried rice, and South Indian
   regional dishes from Andhra Pradesh, Tamil Nadu, Kerala, Karnataka and
   Maharashtra (idli, dosa, pesarattu, sambar, rasam, pulusu, avial, bisi
-  bele bath, ven pongal, misal pav, vada pav, gongura/dosakai/sesame-tamarind/
+  bele bath, ven/chakkera/bellam pongal, punugulu, misal pav, vada pav,
+  vermicelli upma and payasam, rice payasam, gongura/dosakai/sesame-tamarind/
   urad-dal-tamarind pacchadis, and coconut/tomato/peanut chutneys).
 - **Ingredient nutrition database** (`js/ingredients.js`) with calories,
   protein, carbs, fat and fiber per 100 g; every recipe's nutrition is
