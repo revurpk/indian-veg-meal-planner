@@ -13,6 +13,45 @@
     { id: "podi", label: "Podis", emoji: "🧂" },
   ];
   const CATEGORY_EMOJI = Object.fromEntries(CATEGORIES.map((c) => [c.id, c.emoji]));
+  const CATEGORY_ORDER = CATEGORIES.map((c) => c.id);
+
+  // Cuisine/region chips. Each id is a tag already carried by the recipes.
+  const CUISINES = [
+    { id: "all", label: "🌍 All cuisines" },
+    { id: "andhra", label: "Andhra" },
+    { id: "tamil-nadu", label: "Tamil Nadu" },
+    { id: "kerala", label: "Kerala" },
+    { id: "karnataka", label: "Karnataka" },
+    { id: "maharashtra", label: "Maharashtra" },
+    { id: "south-indian", label: "South Indian" },
+    { id: "bengali", label: "Bengali" },
+    { id: "gujarati", label: "Gujarati" },
+    { id: "punjabi", label: "Punjabi" },
+    { id: "rajasthani", label: "Rajasthani" },
+    { id: "kashmiri", label: "Kashmiri" },
+    { id: "bihari", label: "Bihari" },
+    { id: "odia", label: "Odia" },
+    { id: "sindhi", label: "Sindhi" },
+    { id: "nepali", label: "Nepali" },
+    { id: "sri-lankan", label: "Sri Lankan" },
+    { id: "middle-eastern", label: "Middle Eastern" },
+    { id: "turkish", label: "Turkish" },
+    { id: "greek", label: "Greek" },
+    { id: "italian", label: "Italian" },
+    { id: "french", label: "French" },
+    { id: "spanish", label: "Spanish" },
+    { id: "ukrainian", label: "Ukrainian" },
+    { id: "mexican", label: "Mexican" },
+    { id: "chinese", label: "Chinese" },
+    { id: "indo-chinese", label: "Indo-Chinese" },
+    { id: "japanese", label: "Japanese" },
+    { id: "korean", label: "Korean" },
+    { id: "thai", label: "Thai" },
+    { id: "vietnamese", label: "Vietnamese" },
+    { id: "indonesian", label: "Indonesian" },
+    { id: "ethiopian", label: "Ethiopian" },
+    { id: "moroccan", label: "Moroccan" },
+  ];
 
   const TIME_FILTERS = [
     { id: "all", label: "⏱ Any time", max: Infinity },
@@ -48,6 +87,7 @@
   const RECIPE_BY_ID = Object.fromEntries(RECIPES.map((r) => [r.id, r]));
 
   let activeCategory = "all";
+  let activeCuisine = "all";
   let activeTimeFilter = "all";
   let activeMealFilters = new Set();
   let activeTagFilters = new Set();
@@ -145,6 +185,7 @@
     return RECIPES.filter((r) => {
       if (activeCategory !== "all" && r.category !== activeCategory) return false;
       if (timeFilter && r.time.prep + r.time.cook > timeFilter.max) return false;
+      if (activeCuisine !== "all" && !r.tags.includes(activeCuisine)) return false;
       if (activeMealFilters.size > 0 && ![...activeMealFilters].some((tag) => r.tags.includes(tag))) return false;
       if (!recipeMatchesSearch(r, searchQuery)) return false;
       for (const tagId of activeTagFilters) {
@@ -152,6 +193,11 @@
         if (filter && !filter.test(r)) return false;
       }
       return true;
+    }).sort((a, b) => {
+      // Keep the grid grouped by dish type regardless of position in RECIPES,
+      // so appending new recipes to the file doesn't scramble the "All" view.
+      const d = CATEGORY_ORDER.indexOf(a.category) - CATEGORY_ORDER.indexOf(b.category);
+      return d !== 0 ? d : 0;
     });
   }
 
@@ -167,6 +213,24 @@
       btn.addEventListener("click", () => {
         activeCategory = c.id;
         renderCategoryFilters();
+        renderRecipeGrid();
+      });
+      el.appendChild(btn);
+    });
+  }
+
+  function renderCuisineFilters() {
+    const el = document.getElementById("cuisineFilters");
+    el.innerHTML = "";
+    // Only offer cuisines that actually have recipes, so the row can't go stale.
+    CUISINES.filter((c) => c.id === "all" || RECIPES.some((r) => r.tags.includes(c.id))).forEach((c) => {
+      const btn = document.createElement("button");
+      btn.className = "chip chip-sm" + (activeCuisine === c.id ? " active" : "");
+      btn.type = "button";
+      btn.textContent = c.label;
+      btn.addEventListener("click", () => {
+        activeCuisine = c.id;
+        renderCuisineFilters();
         renderRecipeGrid();
       });
       el.appendChild(btn);
@@ -684,6 +748,7 @@
 
   // ---------------- Init ----------------
   renderCategoryFilters();
+  renderCuisineFilters();
   renderMealFilters();
   renderTimeFilters();
   renderTagFilters();

@@ -1,8 +1,10 @@
 # Veg Meal Planner
 
 A standalone, installable weekly meal planner built around quick, nutritious
-Indian vegetarian recipes for busy professionals. No meat, fish, or egg —
-dairy is used freely. No build step, no external runtime dependencies.
+vegetarian recipes for busy professionals — rooted in Indian home cooking
+and extended across the subcontinent and around the world. No meat, fish,
+or egg — dairy is used freely. No build step, no external runtime
+dependencies.
 
 Binding project rules (vegetarian-only, safety/security review before every
 commit, licensing) are in [CONSTITUTION.md](CONSTITUTION.md).
@@ -19,7 +21,7 @@ real HTTP origin, so `http://` is recommended over `file://`).
 
 ## Features
 
-- **100 recipes** across soups, mains, pasta, bread-based dishes, snacks,
+- **156 recipes** across soups, mains, pasta, bread-based dishes, snacks,
   desserts and podis — all original recipe text. Includes pan-Indian
   staples (samosa, chapati, poori), Indo-Chinese vegetable fried rice, and
   South Indian regional dishes from Andhra Pradesh, Tamil Nadu, Kerala,
@@ -32,15 +34,31 @@ real HTTP origin, so `http://` is recommended over `file://`).
   dal), gongura/dosakai/sesame-tamarind/urad-dal-tamarind pacchadis,
   coconut/tomato/peanut chutneys, and dry spice-powder podis (kandi,
   karvepaku, kobbera, nuvvula).
+- **Across the subcontinent** — Bengali (aloo posto, cholar dal, shukto,
+  beguni, labra), Gujarati (khaman dhokla, thepla, khandvi, undhiyu),
+  Punjabi (dal makhani, sarson da saag, baingan bharta, bhatura, aloo
+  palak), Rajasthani (gatte ki sabzi, panchmel dal), Kashmiri (dum aloo,
+  nadru yakhni), Bihari (litti chokha), Odia (dalma), Sindhi (kadhi),
+  Nepali (momo, aloo tama) and Sri Lankan (parippu, cashew curry).
+- **Around the world** — Middle Eastern (hummus, falafel, mujadara,
+  tabbouleh, baba ganoush, baklava), Greek, Italian (minestrone, risotto,
+  margherita, pesto), French ratatouille, Spanish (patatas bravas,
+  churros), Turkish and Ukrainian soups, Mexican (guacamole, quesadilla,
+  tacos, elote), Japanese, Thai, Chinese, Korean, Vietnamese, Indonesian,
+  Ethiopian and Moroccan dishes. Dishes normally made with fish sauce,
+  shrimp paste, dashi or egg (Thai green curry, gado-gado, miso soup,
+  churros, falafel) carry explicit notes on keeping them vegetarian, and
+  cheeses are specified as vegetarian-rennet.
 - **Ingredient nutrition database** (`js/ingredients.js`) with calories,
   protein, carbs, fat and fiber per 100 g; every recipe's nutrition is
   computed live from its ingredient list and serving count.
 - **Search by name or ingredient** — e.g. searching "paneer" or "mushroom"
   surfaces every recipe that uses it, not just ones with it in the title.
-- **Category, meal-time, time and quick filters** — dish type (soup/main/
-  pasta/bread/snack/dessert/podi), Breakfast/Lunch/Dinner/Easy to Pack for
-  Lunch, time budget (≤15/30/45 min), and quality tags (High-Protein,
-  No-Cook, Make-Ahead, Kids-Friendly, One-Pot).
+- **Category, cuisine, meal-time, time and quick filters** — dish type
+  (soup/main/pasta/bread/snack/dessert/podi), cuisine/region (33 of them,
+  from Andhra to Ethiopian), Breakfast/Lunch/Dinner/Easy to Pack for Lunch,
+  time budget (≤15/30/45 min), and quality tags (High-Protein, No-Cook,
+  Make-Ahead, Kids-Friendly, One-Pot).
 - **Weekly planner** — assign recipes to Breakfast/Lunch/Snack/Dinner across
   the week, with per-day and per-week calorie totals. Saved to
   `localStorage`.

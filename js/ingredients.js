@@ -132,4 +132,84 @@ const INGREDIENTS = {
   pomegranate: { name: "Pomegranate", cat: "Fruits", kcal: 83, protein: 1.7, carbs: 18.7, fat: 1.2, fiber: 4 },
   orange: { name: "Orange", cat: "Fruits", kcal: 47, protein: 0.9, carbs: 11.8, fat: 0.1, fiber: 2.4 },
   grapes: { name: "Grapes", cat: "Fruits", kcal: 69, protein: 0.7, carbs: 18.1, fat: 0.2, fiber: 0.9 },
+
+  // ---- Regional Indian + international pantry ----
+  // Grains, flours, wrappers
+  arborio_rice: { name: "Arborio rice", cat: "Grains", kcal: 358, protein: 6.7, carbs: 80, fat: 0.6, fiber: 1.4 },
+  bulgur: { name: "Bulgur wheat", cat: "Grains", kcal: 342, protein: 12.3, carbs: 76, fat: 1.3, fiber: 18.3 },
+  couscous: { name: "Couscous", cat: "Grains", kcal: 376, protein: 12.8, carbs: 77.4, fat: 0.6, fiber: 5 },
+  noodles_wheat: { name: "Wheat noodles (hakka/egg-free)", cat: "Grains", kcal: 348, protein: 11.5, carbs: 71, fat: 1.8, fiber: 3 },
+  rice_paper: { name: "Rice paper wrappers", cat: "Grains", kcal: 330, protein: 1.5, carbs: 81, fat: 0.2, fiber: 2 },
+  tortilla: { name: "Wheat tortilla", cat: "Grains", kcal: 306, protein: 8.2, carbs: 51, fat: 7.5, fiber: 3 },
+  phyllo_pastry: { name: "Phyllo pastry", cat: "Grains", kcal: 299, protein: 7.1, carbs: 52.5, fat: 5.8, fiber: 1.8 },
+  makki_flour: { name: "Maize flour (makki ka atta)", cat: "Grains", kcal: 361, protein: 6.9, carbs: 76.9, fat: 3.9, fiber: 7.3 },
+  rice_flour: { name: "Rice flour", cat: "Grains", kcal: 366, protein: 6, carbs: 80, fat: 1.4, fiber: 2.4 },
+  sattu: { name: "Sattu (roasted gram flour)", cat: "Grains", kcal: 413, protein: 20.6, carbs: 60, fat: 5.2, fiber: 18 },
+  yeast: { name: "Dry active yeast", cat: "Grains", kcal: 325, protein: 40.4, carbs: 41.2, fat: 7.6, fiber: 26.9 },
+
+  // Pulses, beans, soy
+  black_beans: { name: "Black beans, cooked", cat: "Pulses", kcal: 132, protein: 8.9, carbs: 23.7, fat: 0.5, fiber: 8.7 },
+  white_beans: { name: "White beans (cannellini), cooked", cat: "Pulses", kcal: 139, protein: 9.7, carbs: 25.1, fat: 0.4, fiber: 6.3 },
+  black_eyed_peas: { name: "Black-eyed peas, cooked", cat: "Pulses", kcal: 116, protein: 7.7, carbs: 20.8, fat: 0.5, fiber: 6.5 },
+  urad_whole: { name: "Whole urad (black gram)", cat: "Pulses", kcal: 341, protein: 25.2, carbs: 58.9, fat: 1.6, fiber: 18 },
+  brown_lentils: { name: "Brown/green lentils", cat: "Pulses", kcal: 352, protein: 24.6, carbs: 63.4, fat: 1.1, fiber: 10.7 },
+  chickpeas_dry: { name: "Dried chickpeas", cat: "Pulses", kcal: 364, protein: 19.3, carbs: 60.7, fat: 6, fiber: 17.4 },
+  tofu: { name: "Firm tofu", cat: "Pulses", kcal: 76, protein: 8.1, carbs: 1.9, fat: 4.8, fiber: 0.3 },
+
+  // Vegetables & herbs
+  zucchini: { name: "Zucchini/courgette", cat: "Vegetables", kcal: 17, protein: 1.2, carbs: 3.1, fat: 0.3, fiber: 1 },
+  avocado: { name: "Avocado", cat: "Vegetables", kcal: 160, protein: 2, carbs: 8.5, fat: 14.7, fiber: 6.7 },
+  olives: { name: "Olives", cat: "Vegetables", kcal: 115, protein: 0.8, carbs: 6.3, fat: 10.7, fiber: 3.2 },
+  celery: { name: "Celery", cat: "Vegetables", kcal: 16, protein: 0.7, carbs: 3, fat: 0.2, fiber: 1.6 },
+  lotus_stem: { name: "Lotus stem (nadru)", cat: "Vegetables", kcal: 74, protein: 2.6, carbs: 17.2, fat: 0.1, fiber: 4.9 },
+  bitter_gourd: { name: "Bitter gourd (karela)", cat: "Vegetables", kcal: 17, protein: 1, carbs: 3.7, fat: 0.2, fiber: 2.8 },
+  fenugreek_leaves: { name: "Fresh fenugreek leaves (methi)", cat: "Vegetables", kcal: 49, protein: 4.4, carbs: 6, fat: 0.9, fiber: 1.1 },
+  mustard_greens: { name: "Mustard greens (sarson)", cat: "Vegetables", kcal: 27, protein: 2.9, carbs: 4.7, fat: 0.4, fiber: 3.2 },
+  yam: { name: "Yam (suran)", cat: "Vegetables", kcal: 118, protein: 1.5, carbs: 27.9, fat: 0.2, fiber: 4.1 },
+  bamboo_shoots: { name: "Bamboo shoots", cat: "Vegetables", kcal: 27, protein: 2.6, carbs: 5.2, fat: 0.3, fiber: 2.2 },
+  parsley: { name: "Flat-leaf parsley", cat: "Vegetables", kcal: 36, protein: 3, carbs: 6.3, fat: 0.8, fiber: 3.3 },
+  basil: { name: "Fresh basil", cat: "Vegetables", kcal: 23, protein: 3.2, carbs: 2.6, fat: 0.6, fiber: 1.6 },
+  lime: { name: "Lime", cat: "Vegetables", kcal: 30, protein: 0.7, carbs: 10.5, fat: 0.2, fiber: 2.8 },
+  bean_sprouts: { name: "Bean sprouts", cat: "Vegetables", kcal: 30, protein: 3, carbs: 5.9, fat: 0.2, fiber: 1.8 },
+
+  // Dairy (all cheeses assumed vegetarian-rennet — see recipe notes)
+  feta_cheese: { name: "Feta cheese (vegetarian rennet)", cat: "Dairy", kcal: 264, protein: 14.2, carbs: 4.1, fat: 21.3, fiber: 0 },
+  mozzarella: { name: "Mozzarella (vegetarian rennet)", cat: "Dairy", kcal: 280, protein: 22.2, carbs: 2.2, fat: 17.1, fiber: 0 },
+  parmesan: { name: "Hard grating cheese (vegetarian rennet)", cat: "Dairy", kcal: 392, protein: 35.8, carbs: 3.2, fat: 25.8, fiber: 0 },
+
+  // Nuts, seeds, pastes
+  poppy_seeds: { name: "Poppy seeds (posto/khus khus)", cat: "Nuts", kcal: 525, protein: 18, carbs: 28.1, fat: 41.6, fiber: 19.5 },
+  tahini: { name: "Tahini (sesame paste)", cat: "Nuts", kcal: 595, protein: 17, carbs: 21.2, fat: 53.8, fiber: 9.3 },
+  peanut_butter: { name: "Peanut butter", cat: "Nuts", kcal: 588, protein: 25.1, carbs: 20, fat: 50.4, fiber: 6 },
+  pistachios: { name: "Pistachios", cat: "Nuts", kcal: 560, protein: 20.2, carbs: 27.2, fat: 45.3, fiber: 10.6 },
+  pine_nuts: { name: "Pine nuts", cat: "Nuts", kcal: 673, protein: 13.7, carbs: 13.1, fat: 68.4, fiber: 3.7 },
+
+  // Fats
+  olive_oil: { name: "Olive oil", cat: "Fats", kcal: 884, protein: 0, carbs: 0, fat: 100, fiber: 0 },
+  sesame_oil: { name: "Toasted sesame oil", cat: "Fats", kcal: 884, protein: 0, carbs: 0, fat: 100, fiber: 0 },
+  coconut_milk: { name: "Coconut milk", cat: "Fats", kcal: 230, protein: 2.3, carbs: 5.5, fat: 23.8, fiber: 2.2 },
+
+  // Spices, pastes & condiments
+  cumin_powder: { name: "Cumin powder", cat: "Spices", kcal: 375, protein: 17.8, carbs: 44.2, fat: 22.3, fiber: 10.5 },
+  red_chili_flakes: { name: "Red chili flakes", cat: "Spices", kcal: 282, protein: 12, carbs: 50, fat: 14, fiber: 28.7 },
+  oregano_dried: { name: "Dried oregano", cat: "Spices", kcal: 265, protein: 9, carbs: 68.9, fat: 4.3, fiber: 42.5 },
+  paprika: { name: "Paprika", cat: "Spices", kcal: 282, protein: 14.1, carbs: 54, fat: 12.9, fiber: 34.9 },
+  cinnamon: { name: "Cinnamon", cat: "Spices", kcal: 247, protein: 4, carbs: 80.6, fat: 1.2, fiber: 53.1 },
+  cloves: { name: "Cloves", cat: "Spices", kcal: 274, protein: 6, carbs: 65.5, fat: 13, fiber: 33.9 },
+  bay_leaf: { name: "Bay leaf", cat: "Spices", kcal: 313, protein: 7.6, carbs: 75, fat: 8.4, fiber: 26.3 },
+  fennel_seeds: { name: "Fennel seeds (saunf)", cat: "Spices", kcal: 345, protein: 15.8, carbs: 52.3, fat: 14.9, fiber: 39.8 },
+  carom_seeds: { name: "Carom seeds (ajwain)", cat: "Spices", kcal: 305, protein: 15.9, carbs: 43.2, fat: 21.1, fiber: 38.6 },
+  nigella_seeds: { name: "Nigella seeds (kalonji)", cat: "Spices", kcal: 400, protein: 17.8, carbs: 52.3, fat: 22.4, fiber: 40 },
+  fenugreek_seeds: { name: "Fenugreek seeds (methi)", cat: "Spices", kcal: 323, protein: 23, carbs: 58.4, fat: 6.4, fiber: 24.6 },
+  panch_phoron: { name: "Panch phoron (Bengali five-spice)", cat: "Spices", kcal: 380, protein: 17, carbs: 45, fat: 18, fiber: 25 },
+  kasuri_methi: { name: "Kasuri methi (dried fenugreek leaves)", cat: "Spices", kcal: 300, protein: 25, carbs: 45, fat: 6, fiber: 28 },
+  amchur: { name: "Amchur (dry mango powder)", cat: "Spices", kcal: 305, protein: 1.5, carbs: 74, fat: 1, fiber: 3 },
+  miso_paste: { name: "Miso paste", cat: "Spices", kcal: 199, protein: 12.8, carbs: 26.5, fat: 6, fiber: 5.4 },
+  kombu: { name: "Kombu (dried kelp)", cat: "Spices", kcal: 43, protein: 1.7, carbs: 9.6, fat: 0.6, fiber: 1.3 },
+  gochujang: { name: "Gochujang (vegetarian)", cat: "Spices", kcal: 214, protein: 5.5, carbs: 45, fat: 1.6, fiber: 3.8 },
+  green_curry_paste: { name: "Thai green curry paste (vegetarian)", cat: "Spices", kcal: 200, protein: 3.5, carbs: 20, fat: 12, fiber: 4 },
+  lemongrass: { name: "Lemongrass", cat: "Spices", kcal: 99, protein: 1.8, carbs: 25.3, fat: 0.5, fiber: 0 },
+  ras_el_hanout: { name: "Ras el hanout", cat: "Spices", kcal: 330, protein: 12, carbs: 50, fat: 12, fiber: 30 },
+  berbere: { name: "Berbere spice blend", cat: "Spices", kcal: 320, protein: 13, carbs: 50, fat: 10, fiber: 30 },
+  chili_bean_paste: { name: "Chili bean paste (doubanjiang)", cat: "Spices", kcal: 180, protein: 8, carbs: 20, fat: 8, fiber: 6 },
 };
