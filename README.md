@@ -37,8 +37,10 @@ real HTTP origin, so `http://` is recommended over `file://`).
   computed live from its ingredient list and serving count.
 - **Search by name or ingredient** — e.g. searching "paneer" or "mushroom"
   surfaces every recipe that uses it, not just ones with it in the title.
-- **Category and quick filters** (Quick ≤20 min, High-Protein, No-Cook,
-  Make-Ahead, Kids-Friendly, One-Pot).
+- **Category, meal-time, time and quick filters** — dish type (soup/main/
+  pasta/bread/snack/dessert/podi), Breakfast/Lunch/Dinner/Easy to Pack for
+  Lunch, time budget (≤15/30/45 min), and quality tags (High-Protein,
+  No-Cook, Make-Ahead, Kids-Friendly, One-Pot).
 - **Weekly planner** — assign recipes to Breakfast/Lunch/Snack/Dinner across
   the week, with per-day and per-week calorie totals. Saved to
   `localStorage`.

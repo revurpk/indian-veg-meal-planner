@@ -7,7 +7,7 @@ const RECIPES = [
   // ---------------- SOUPS ----------------
   {
     id: "tomato_soup", name: "Tomato Soup", category: "soup",
-    tags: ["quick", "one-pot", "kids-friendly"], time: { prep: 5, cook: 15 }, servings: 3,
+    tags: ["quick", "one-pot", "kids-friendly", "dinner"], time: { prep: 5, cook: 15 }, servings: 3,
     ingredients: [
       { id: "tomato", qty: "5 medium", grams: 500 },
       { id: "onion", qty: "1 small", grams: 60 },
@@ -27,7 +27,7 @@ const RECIPES = [
   },
   {
     id: "sweet_corn_soup", name: "Sweet Corn Soup", category: "soup",
-    tags: ["quick", "one-pot", "kids-friendly"], time: { prep: 5, cook: 15 }, servings: 3,
+    tags: ["quick", "one-pot", "kids-friendly", "dinner"], time: { prep: 5, cook: 15 }, servings: 3,
     ingredients: [
       { id: "corn", qty: "1.5 cups kernels", grams: 220 },
       { id: "carrot", qty: "1 small, finely diced", grams: 40 },
@@ -47,7 +47,7 @@ const RECIPES = [
   },
   {
     id: "lemon_coriander_soup", name: "Lemon Coriander Soup", category: "soup",
-    tags: ["quick", "one-pot", "light"], time: { prep: 5, cook: 10 }, servings: 3,
+    tags: ["quick", "one-pot", "light", "dinner"], time: { prep: 5, cook: 10 }, servings: 3,
     ingredients: [
       { id: "carrot", qty: "1 small, julienned", grams: 40 },
       { id: "cabbage", qty: "1/2 cup, shredded", grams: 45 },
@@ -70,7 +70,7 @@ const RECIPES = [
   },
   {
     id: "mixed_veg_soup", name: "Mixed Vegetable Soup", category: "soup",
-    tags: ["quick", "one-pot", "high-fiber"], time: { prep: 8, cook: 15 }, servings: 4,
+    tags: ["quick", "one-pot", "high-fiber", "dinner"], time: { prep: 8, cook: 15 }, servings: 4,
     ingredients: [
       { id: "carrot", qty: "1 medium, diced", grams: 60 },
       { id: "potato", qty: "1 small, diced", grams: 100 },
@@ -91,7 +91,7 @@ const RECIPES = [
   },
   {
     id: "palak_soup", name: "Spinach (Palak) Soup", category: "soup",
-    tags: ["quick", "one-pot", "high-fiber", "iron-rich"], time: { prep: 5, cook: 12 }, servings: 3,
+    tags: ["quick", "one-pot", "high-fiber", "iron-rich", "dinner"], time: { prep: 5, cook: 12 }, servings: 3,
     ingredients: [
       { id: "spinach", qty: "4 cups, chopped", grams: 150 },
       { id: "onion", qty: "1 small", grams: 60 },
@@ -110,7 +110,7 @@ const RECIPES = [
   },
   {
     id: "hot_sour_veg_soup", name: "Hot & Sour Vegetable Soup", category: "soup",
-    tags: ["quick", "one-pot", "indo-chinese"], time: { prep: 8, cook: 12 }, servings: 3,
+    tags: ["quick", "one-pot", "indo-chinese", "dinner"], time: { prep: 8, cook: 12 }, servings: 3,
     ingredients: [
       { id: "cabbage", qty: "1/2 cup, shredded", grams: 45 },
       { id: "carrot", qty: "1 small, julienned", grams: 40 },
@@ -134,7 +134,7 @@ const RECIPES = [
   },
   {
     id: "rasam", name: "Rasam", category: "soup",
-    tags: ["quick", "one-pot", "tamil-nadu", "light"], time: { prep: 5, cook: 15 }, servings: 4,
+    tags: ["quick", "one-pot", "tamil-nadu", "light", "lunch", "dinner"], time: { prep: 5, cook: 15 }, servings: 4,
     ingredients: [
       { id: "tomato", qty: "2 medium", grams: 200 },
       { id: "tamarind_pulp", qty: "2 tbsp", grams: 30 },
@@ -160,7 +160,7 @@ const RECIPES = [
   // ---------------- MAINS ----------------
   {
     id: "jeera_rice", name: "Jeera Rice", category: "main",
-    tags: ["quick", "one-pot", "kids-friendly"], time: { prep: 5, cook: 20 }, servings: 3,
+    tags: ["quick", "one-pot", "kids-friendly", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 5, cook: 20 }, servings: 3,
     ingredients: [
       { id: "rice_basmati_raw", qty: "1.5 cups", grams: 300 },
       { id: "cumin_seeds", qty: "1.5 tsp", grams: 3 },
@@ -176,7 +176,7 @@ const RECIPES = [
   },
   {
     id: "veg_pulao", name: "Vegetable Pulao", category: "main",
-    tags: ["one-pot", "make-ahead"], time: { prep: 10, cook: 20 }, servings: 4,
+    tags: ["one-pot", "make-ahead", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 20 }, servings: 4,
     ingredients: [
       { id: "rice_basmati_raw", qty: "2 cups", grams: 400 },
       { id: "carrot", qty: "1 medium, diced", grams: 60 },
@@ -198,7 +198,7 @@ const RECIPES = [
   },
   {
     id: "dal_tadka", name: "Dal Tadka", category: "main",
-    tags: ["one-pot", "high-protein", "make-ahead"], time: { prep: 5, cook: 25 }, servings: 4,
+    tags: ["one-pot", "high-protein", "make-ahead", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 5, cook: 25 }, servings: 4,
     ingredients: [
       { id: "toor_dal", qty: "1 cup", grams: 200 },
       { id: "turmeric", qty: "1/2 tsp", grams: 1.5 },
@@ -220,7 +220,7 @@ const RECIPES = [
   },
   {
     id: "rajma_masala", name: "Rajma Masala", category: "main",
-    tags: ["high-protein", "make-ahead"], time: { prep: 5, cook: 20 }, servings: 4,
+    tags: ["high-protein", "make-ahead", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 5, cook: 20 }, servings: 4,
     ingredients: [
       { id: "rajma_cooked", qty: "3 cups (pre-cooked/canned)", grams: 540 },
       { id: "onion", qty: "1 medium, chopped", grams: 100 },
@@ -243,7 +243,7 @@ const RECIPES = [
   },
   {
     id: "chana_masala", name: "Chana Masala", category: "main",
-    tags: ["high-protein", "make-ahead"], time: { prep: 5, cook: 18 }, servings: 4,
+    tags: ["high-protein", "make-ahead", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 5, cook: 18 }, servings: 4,
     ingredients: [
       { id: "chickpeas_cooked", qty: "3 cups (pre-cooked/canned)", grams: 492 },
       { id: "onion", qty: "1 medium, chopped", grams: 100 },
@@ -266,7 +266,7 @@ const RECIPES = [
   },
   {
     id: "paneer_bhurji", name: "Paneer Bhurji", category: "main",
-    tags: ["quick", "high-protein", "kids-friendly"], time: { prep: 5, cook: 10 }, servings: 3,
+    tags: ["quick", "high-protein", "kids-friendly", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 5, cook: 10 }, servings: 3,
     ingredients: [
       { id: "paneer", qty: "250 g, crumbled", grams: 250 },
       { id: "onion", qty: "1 medium, chopped", grams: 100 },
@@ -288,7 +288,7 @@ const RECIPES = [
   },
   {
     id: "matar_paneer", name: "Matar Paneer", category: "main",
-    tags: ["high-protein", "quick"], time: { prep: 8, cook: 15 }, servings: 4,
+    tags: ["high-protein", "quick", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 8, cook: 15 }, servings: 4,
     ingredients: [
       { id: "paneer", qty: "250 g, cubed", grams: 250 },
       { id: "peas", qty: "1 cup", grams: 150 },
@@ -311,7 +311,7 @@ const RECIPES = [
   },
   {
     id: "veg_khichdi", name: "Vegetable Khichdi", category: "main",
-    tags: ["one-pot", "quick", "comfort-food", "high-fiber"], time: { prep: 5, cook: 20 }, servings: 4,
+    tags: ["one-pot", "quick", "comfort-food", "high-fiber", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 5, cook: 20 }, servings: 4,
     ingredients: [
       { id: "rice_basmati_raw", qty: "1 cup", grams: 200 },
       { id: "moong_dal", qty: "1/2 cup", grams: 100 },
@@ -333,7 +333,7 @@ const RECIPES = [
   },
   {
     id: "moong_dal_cheela", name: "Moong Dal Cheela", category: "main",
-    tags: ["high-protein", "quick", "gluten-free-option"], time: { prep: 15, cook: 15 }, servings: 3,
+    tags: ["high-protein", "quick", "gluten-free-option", "breakfast", "lunch", "lunchbox-friendly"], time: { prep: 15, cook: 15 }, servings: 3,
     ingredients: [
       { id: "moong_dal", qty: "1 cup, soaked 2+ hrs", grams: 200 },
       { id: "ginger", qty: "1/2 inch", grams: 5 },
@@ -353,7 +353,7 @@ const RECIPES = [
   },
   {
     id: "besan_chilla", name: "Besan Chilla", category: "main",
-    tags: ["quick", "high-protein", "gluten-free"], time: { prep: 10, cook: 12 }, servings: 3,
+    tags: ["quick", "high-protein", "gluten-free", "breakfast", "lunch", "lunchbox-friendly"], time: { prep: 10, cook: 12 }, servings: 3,
     ingredients: [
       { id: "besan", qty: "1.5 cups", grams: 150 },
       { id: "onion", qty: "1 small, finely chopped", grams: 60 },
@@ -373,7 +373,7 @@ const RECIPES = [
   },
   {
     id: "curd_rice", name: "Curd Rice", category: "main",
-    tags: ["no-cook-finish", "quick", "cooling", "kids-friendly"], time: { prep: 10, cook: 5 }, servings: 3,
+    tags: ["no-cook-finish", "quick", "cooling", "kids-friendly", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 5 }, servings: 3,
     ingredients: [
       { id: "rice_cooked", qty: "2 cups, cooled", grams: 300 },
       { id: "curd", qty: "1.5 cups", grams: 370 },
@@ -395,7 +395,7 @@ const RECIPES = [
   },
   {
     id: "poha", name: "Poha", category: "main",
-    tags: ["quick", "one-pot", "breakfast", "kids-friendly"], time: { prep: 5, cook: 10 }, servings: 3,
+    tags: ["quick", "one-pot", "breakfast", "kids-friendly", "lunchbox-friendly"], time: { prep: 5, cook: 10 }, servings: 3,
     ingredients: [
       { id: "poha", qty: "2 cups thick poha", grams: 150 },
       { id: "onion", qty: "1 medium, chopped", grams: 100 },
@@ -419,7 +419,7 @@ const RECIPES = [
   },
   {
     id: "upma", name: "Upma", category: "main",
-    tags: ["quick", "one-pot", "breakfast", "kids-friendly"], time: { prep: 5, cook: 15 }, servings: 3,
+    tags: ["quick", "one-pot", "breakfast", "kids-friendly", "lunchbox-friendly"], time: { prep: 5, cook: 15 }, servings: 3,
     ingredients: [
       { id: "rava", qty: "1 cup", grams: 170 },
       { id: "onion", qty: "1 small, chopped", grams: 60 },
@@ -441,7 +441,7 @@ const RECIPES = [
   },
   {
     id: "vermicelli_upma", name: "Vermicelli Upma (Semiya Upma)", category: "main",
-    tags: ["quick", "one-pot", "breakfast", "kids-friendly"], time: { prep: 5, cook: 15 }, servings: 3,
+    tags: ["quick", "one-pot", "breakfast", "kids-friendly", "lunchbox-friendly"], time: { prep: 5, cook: 15 }, servings: 3,
     ingredients: [
       { id: "vermicelli", qty: "1.5 cups", grams: 150 },
       { id: "onion", qty: "1 small, chopped", grams: 60 },
@@ -463,7 +463,7 @@ const RECIPES = [
   },
   {
     id: "sabudana_khichdi", name: "Sabudana Khichdi", category: "main",
-    tags: ["quick", "one-pot", "gluten-free"], time: { prep: 10, cook: 15 }, soakNote: "plus 4+ hrs soaking (do this ahead)", servings: 3,
+    tags: ["quick", "one-pot", "gluten-free", "breakfast", "lunchbox-friendly"], time: { prep: 10, cook: 15 }, soakNote: "plus 4+ hrs soaking (do this ahead)", servings: 3,
     ingredients: [
       { id: "sabudana", qty: "1.5 cups, soaked overnight", grams: 200 },
       { id: "potato", qty: "1 medium, diced", grams: 150 },
@@ -484,7 +484,7 @@ const RECIPES = [
   },
   {
     id: "aloo_paratha", name: "Aloo Paratha", category: "main",
-    tags: ["comfort-food", "make-ahead"], time: { prep: 15, cook: 20 }, servings: 4,
+    tags: ["comfort-food", "make-ahead", "breakfast", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 15, cook: 20 }, servings: 4,
     ingredients: [
       { id: "wheat_flour", qty: "2 cups (dough) + extra for rolling", grams: 240 },
       { id: "potato", qty: "3 medium, boiled & mashed", grams: 450 },
@@ -504,7 +504,7 @@ const RECIPES = [
   },
   {
     id: "idli", name: "Idli", category: "main",
-    tags: ["breakfast", "gluten-free", "make-ahead", "south-indian"], time: { prep: 15, cook: 12 },
+    tags: ["breakfast", "gluten-free", "make-ahead", "south-indian", "lunchbox-friendly"], time: { prep: 15, cook: 12 },
     soakNote: "batter needs 6+ hrs soak and an overnight ferment — plan ahead, or use store-bought batter", servings: 6,
     ingredients: [
       { id: "rice_basmati_raw", qty: "2 cups, soaked (idli rice traditionally)", grams: 400 },
@@ -601,7 +601,7 @@ const RECIPES = [
   },
   {
     id: "sambar", name: "Sambar", category: "main",
-    tags: ["one-pot", "high-fiber", "make-ahead", "south-indian"], time: { prep: 10, cook: 25 }, servings: 4,
+    tags: ["one-pot", "high-fiber", "make-ahead", "south-indian", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 25 }, servings: 4,
     ingredients: [
       { id: "toor_dal", qty: "1 cup", grams: 200 },
       { id: "drumstick", qty: "1 cup, chopped", grams: 100 },
@@ -626,7 +626,7 @@ const RECIPES = [
   },
   {
     id: "pulusu", name: "Tomato Pulusu", category: "main",
-    tags: ["one-pot", "tangy", "andhra"], time: { prep: 10, cook: 20 }, servings: 4,
+    tags: ["one-pot", "tangy", "andhra", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 20 }, servings: 4,
     ingredients: [
       { id: "tomato", qty: "4 medium", grams: 400 },
       { id: "onion", qty: "1 medium, sliced", grams: 100 },
@@ -651,7 +651,7 @@ const RECIPES = [
   },
   {
     id: "avial", name: "Avial", category: "main",
-    tags: ["one-pot", "high-fiber", "kerala"], time: { prep: 15, cook: 20 }, servings: 4,
+    tags: ["one-pot", "high-fiber", "kerala", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 15, cook: 20 }, servings: 4,
     ingredients: [
       { id: "raw_banana", qty: "1, chopped", grams: 150 },
       { id: "carrot", qty: "1, chopped", grams: 60 },
@@ -676,7 +676,7 @@ const RECIPES = [
   },
   {
     id: "bisi_bele_bath", name: "Bisi Bele Bath", category: "main",
-    tags: ["one-pot", "comfort-food", "karnataka"], time: { prep: 10, cook: 25 }, servings: 4,
+    tags: ["one-pot", "comfort-food", "karnataka", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 25 }, servings: 4,
     ingredients: [
       { id: "rice_basmati_raw", qty: "1 cup", grams: 200 },
       { id: "toor_dal", qty: "1/2 cup", grams: 100 },
@@ -702,7 +702,7 @@ const RECIPES = [
   },
   {
     id: "ven_pongal", name: "Ven Pongal", category: "main",
-    tags: ["breakfast", "one-pot", "comfort-food", "tamil-nadu"], time: { prep: 5, cook: 20 }, servings: 3,
+    tags: ["breakfast", "one-pot", "comfort-food", "tamil-nadu", "lunchbox-friendly"], time: { prep: 5, cook: 20 }, servings: 3,
     ingredients: [
       { id: "rice_basmati_raw", qty: "1 cup", grams: 200 },
       { id: "moong_dal", qty: "1/2 cup", grams: 100 },
@@ -723,7 +723,7 @@ const RECIPES = [
   },
   {
     id: "misal_pav", name: "Misal Pav", category: "main",
-    tags: ["high-protein", "spicy", "maharashtra"], time: { prep: 10, cook: 20 }, servings: 3,
+    tags: ["high-protein", "spicy", "maharashtra", "lunch", "dinner"], time: { prep: 10, cook: 20 }, servings: 3,
     ingredients: [
       { id: "moong_sprouts", qty: "2 cups", grams: 200 },
       { id: "onion", qty: "1 medium, chopped", grams: 100 },
@@ -749,7 +749,7 @@ const RECIPES = [
   },
   {
     id: "veg_fried_rice", name: "Vegetable Fried Rice", category: "main",
-    tags: ["quick", "one-pot", "indo-chinese"], time: { prep: 10, cook: 15 }, servings: 3,
+    tags: ["quick", "one-pot", "indo-chinese", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 15 }, servings: 3,
     ingredients: [
       { id: "rice_cooked", qty: "3 cups, cooled (day-old is best)", grams: 450 },
       { id: "carrot", qty: "1, diced small", grams: 60 },
@@ -773,7 +773,7 @@ const RECIPES = [
   },
   {
     id: "vankaya_koora", name: "Vankaya Koora (Brinjal Fry)", category: "main",
-    tags: ["andhra", "quick", "one-pot"], time: { prep: 10, cook: 15 }, servings: 3,
+    tags: ["andhra", "quick", "one-pot", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 15 }, servings: 3,
     ingredients: [
       { id: "brinjal", qty: "3 cups, chopped", grams: 300 },
       { id: "onion", qty: "1 small, chopped", grams: 60 },
@@ -795,7 +795,7 @@ const RECIPES = [
   },
   {
     id: "carrot_koora", name: "Carrot Koora", category: "main",
-    tags: ["andhra", "quick", "one-pot"], time: { prep: 10, cook: 15 }, servings: 3,
+    tags: ["andhra", "quick", "one-pot", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 15 }, servings: 3,
     ingredients: [
       { id: "carrot", qty: "3 cups, grated or finely chopped", grams: 300 },
       { id: "onion", qty: "1 small, chopped", grams: 60 },
@@ -817,7 +817,7 @@ const RECIPES = [
   },
   {
     id: "beans_koora", name: "Beans Koora", category: "main",
-    tags: ["andhra", "quick", "one-pot", "high-fiber"], time: { prep: 10, cook: 15 }, servings: 3,
+    tags: ["andhra", "quick", "one-pot", "high-fiber", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 15 }, servings: 3,
     ingredients: [
       { id: "green_beans", qty: "3 cups, chopped", grams: 300 },
       { id: "onion", qty: "1 small, chopped", grams: 60 },
@@ -839,7 +839,7 @@ const RECIPES = [
   },
   {
     id: "chayote_koora", name: "Chayote Squash Koora", category: "main",
-    tags: ["andhra", "quick", "light"], time: { prep: 10, cook: 15 }, servings: 3,
+    tags: ["andhra", "quick", "light", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 15 }, servings: 3,
     ingredients: [
       { id: "chayote", qty: "3 cups, peeled & chopped", grams: 300 },
       { id: "onion", qty: "1 small, chopped", grams: 60 },
@@ -861,7 +861,7 @@ const RECIPES = [
   },
   {
     id: "chikkudukaya_koora", name: "Chikkudu Kaya Koora (Indian Broad Beans Fry)", category: "main",
-    tags: ["andhra", "high-fiber"], time: { prep: 10, cook: 18 }, servings: 3,
+    tags: ["andhra", "high-fiber", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 18 }, servings: 3,
     ingredients: [
       { id: "chikkudukaya", qty: "3 cups, chopped", grams: 300 },
       { id: "onion", qty: "1 small, chopped", grams: 60 },
@@ -884,7 +884,7 @@ const RECIPES = [
   },
   {
     id: "vankaya_chikkudukaya_koora", name: "Vankaya Chikkudukaya Koora (Brinjal & Broad Beans Fry)", category: "main",
-    tags: ["andhra"], time: { prep: 12, cook: 18 }, servings: 4,
+    tags: ["andhra", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 12, cook: 18 }, servings: 4,
     ingredients: [
       { id: "brinjal", qty: "1.5 cups, chopped", grams: 150 },
       { id: "chikkudukaya", qty: "1.5 cups, chopped", grams: 150 },
@@ -907,7 +907,7 @@ const RECIPES = [
   },
   {
     id: "aloo_fry", name: "Aloo Fry", category: "main",
-    tags: ["quick", "kids-friendly", "comfort-food"], time: { prep: 10, cook: 15 }, servings: 3,
+    tags: ["quick", "kids-friendly", "comfort-food", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 15 }, servings: 3,
     ingredients: [
       { id: "potato", qty: "3 medium, chopped", grams: 450 },
       { id: "mustard_seeds", qty: "1/2 tsp", grams: 1.5 },
@@ -927,7 +927,7 @@ const RECIPES = [
   },
   {
     id: "aloo_koora_masala_dosa", name: "Aloo Koora for Masala Dosa", category: "main",
-    tags: ["andhra", "south-indian", "comfort-food"], time: { prep: 10, cook: 15 }, servings: 3,
+    tags: ["andhra", "south-indian", "comfort-food", "breakfast", "lunch", "lunchbox-friendly"], time: { prep: 10, cook: 15 }, servings: 3,
     ingredients: [
       { id: "potato", qty: "3 medium, boiled & coarsely mashed", grams: 450 },
       { id: "onion", qty: "1 medium, sliced", grams: 100 },
@@ -951,7 +951,7 @@ const RECIPES = [
   },
   {
     id: "bhendi_koora", name: "Bhendi Koora (Okra Fry)", category: "main",
-    tags: ["andhra", "quick"], time: { prep: 10, cook: 15 }, servings: 3,
+    tags: ["andhra", "quick", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 15 }, servings: 3,
     ingredients: [
       { id: "okra", qty: "3 cups, chopped", grams: 300 },
       { id: "onion", qty: "1 small, chopped", grams: 60 },
@@ -971,7 +971,7 @@ const RECIPES = [
   },
   {
     id: "dondakaya_koora", name: "Dondakaya Koora (Ivy Gourd Fry)", category: "main",
-    tags: ["andhra", "quick"], time: { prep: 10, cook: 15 }, servings: 3,
+    tags: ["andhra", "quick", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 15 }, servings: 3,
     ingredients: [
       { id: "dondakaya", qty: "3 cups, sliced", grams: 300 },
       { id: "onion", qty: "1 small, chopped", grams: 60 },
@@ -992,7 +992,7 @@ const RECIPES = [
   },
   {
     id: "beetroot_koora", name: "Beet Root Koora", category: "main",
-    tags: ["andhra", "quick"], time: { prep: 10, cook: 15 }, servings: 3,
+    tags: ["andhra", "quick", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 15 }, servings: 3,
     ingredients: [
       { id: "beetroot", qty: "3 cups, grated", grams: 300 },
       { id: "onion", qty: "1 small, chopped", grams: 60 },
@@ -1014,7 +1014,7 @@ const RECIPES = [
   },
   {
     id: "palak_pappu", name: "Palak Pappu (Spinach Dal)", category: "main",
-    tags: ["andhra", "high-fiber", "high-protein", "one-pot"], time: { prep: 10, cook: 20 }, servings: 4,
+    tags: ["andhra", "high-fiber", "high-protein", "one-pot", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 20 }, servings: 4,
     ingredients: [
       { id: "toor_dal", qty: "1 cup", grams: 200 },
       { id: "spinach", qty: "3 cups, chopped", grams: 120 },
@@ -1038,7 +1038,7 @@ const RECIPES = [
   },
   {
     id: "thotakoora_pappu", name: "Thotakoora Pappu (Amaranth Leaves Dal)", category: "main",
-    tags: ["andhra", "high-fiber", "one-pot"], time: { prep: 10, cook: 20 }, servings: 4,
+    tags: ["andhra", "high-fiber", "one-pot", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 20 }, servings: 4,
     ingredients: [
       { id: "toor_dal", qty: "1 cup", grams: 200 },
       { id: "thotakoora", qty: "3 cups, chopped", grams: 120 },
@@ -1062,7 +1062,7 @@ const RECIPES = [
   },
   {
     id: "tomato_pappu", name: "Tomato Pappu (Tomato Dal)", category: "main",
-    tags: ["andhra", "one-pot", "quick"], time: { prep: 10, cook: 20 }, servings: 4,
+    tags: ["andhra", "one-pot", "quick", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 20 }, servings: 4,
     ingredients: [
       { id: "toor_dal", qty: "1 cup", grams: 200 },
       { id: "tomato", qty: "3 medium", grams: 300 },
@@ -1087,7 +1087,7 @@ const RECIPES = [
   },
   {
     id: "plain_pappu", name: "Plain Pappu (Toor Dal)", category: "main",
-    tags: ["andhra", "one-pot", "quick", "high-protein"], time: { prep: 5, cook: 20 }, servings: 4,
+    tags: ["andhra", "one-pot", "quick", "high-protein", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 5, cook: 20 }, servings: 4,
     ingredients: [
       { id: "toor_dal", qty: "1 cup", grams: 200 },
       { id: "turmeric", qty: "1/2 tsp", grams: 1.5 },
@@ -1109,7 +1109,7 @@ const RECIPES = [
   },
   {
     id: "dosakaya_pappu", name: "Dosakaya Pappu (Cucumber Dal)", category: "main",
-    tags: ["andhra", "one-pot", "high-protein"], time: { prep: 10, cook: 20 }, servings: 4,
+    tags: ["andhra", "one-pot", "high-protein", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 20 }, servings: 4,
     ingredients: [
       { id: "toor_dal", qty: "1 cup", grams: 200 },
       { id: "dosakai", qty: "2 cups, chopped (or an equal amount of regular cucumber)", grams: 300 },
@@ -1132,7 +1132,7 @@ const RECIPES = [
   },
   {
     id: "sorakaya_koora", name: "Sorrakaya Koora (Bottle Gourd Fry)", category: "main",
-    tags: ["andhra", "light", "quick"], time: { prep: 10, cook: 15 }, servings: 3,
+    tags: ["andhra", "light", "quick", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 15 }, servings: 3,
     ingredients: [
       { id: "bottle_gourd", qty: "3 cups, chopped", grams: 300 },
       { id: "onion", qty: "1 small, chopped", grams: 60 },
@@ -1154,7 +1154,7 @@ const RECIPES = [
   },
   {
     id: "beerakaya_koora", name: "Beerakaya Koora (Ridge Gourd Fry)", category: "main",
-    tags: ["andhra", "light", "quick"], time: { prep: 10, cook: 15 }, servings: 3,
+    tags: ["andhra", "light", "quick", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 15 }, servings: 3,
     ingredients: [
       { id: "beerakaya", qty: "3 cups, peeled & chopped", grams: 300 },
       { id: "onion", qty: "1 small, chopped", grams: 60 },
@@ -1176,7 +1176,7 @@ const RECIPES = [
   },
   {
     id: "onion_sambar", name: "Onion Sambar", category: "main",
-    tags: ["andhra", "tamil-nadu", "one-pot", "make-ahead"], time: { prep: 10, cook: 25 }, servings: 4,
+    tags: ["andhra", "tamil-nadu", "one-pot", "make-ahead", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 25 }, servings: 4,
     ingredients: [
       { id: "toor_dal", qty: "1 cup", grams: 200 },
       { id: "onion", qty: "2 cups, sliced (or small pearl onions)", grams: 200 },
@@ -1202,7 +1202,7 @@ const RECIPES = [
   // ---------------- PASTA ----------------
   {
     id: "veg_arrabbiata_pasta", name: "Vegetable Arrabbiata Pasta", category: "pasta",
-    tags: ["quick", "one-pot"], time: { prep: 10, cook: 15 }, servings: 3,
+    tags: ["quick", "one-pot", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 15 }, servings: 3,
     ingredients: [
       { id: "pasta_dry", qty: "250 g", grams: 250 },
       { id: "tomato_puree", qty: "1.5 cups", grams: 360 },
@@ -1223,7 +1223,7 @@ const RECIPES = [
   },
   {
     id: "aglio_olio_pasta", name: "Aglio e Olio Pasta", category: "pasta",
-    tags: ["quick", "minimal-ingredients"], time: { prep: 5, cook: 15 }, servings: 2,
+    tags: ["quick", "minimal-ingredients", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 5, cook: 15 }, servings: 2,
     ingredients: [
       { id: "pasta_dry", qty: "200 g", grams: 200 },
       { id: "garlic", qty: "6 cloves, thinly sliced", grams: 18 },
@@ -1242,7 +1242,7 @@ const RECIPES = [
   },
   {
     id: "veg_mac_cheese", name: "Creamy Vegetable Mac and Cheese", category: "pasta",
-    tags: ["comfort-food", "kids-friendly"], time: { prep: 10, cook: 20 }, servings: 3,
+    tags: ["comfort-food", "kids-friendly", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 20 }, servings: 3,
     ingredients: [
       { id: "pasta_dry", qty: "250 g (elbow macaroni)", grams: 250 },
       { id: "milk", qty: "1.5 cups", grams: 360 },
@@ -1263,7 +1263,7 @@ const RECIPES = [
   },
   {
     id: "veg_primavera_pasta", name: "Vegetable Primavera Pasta", category: "pasta",
-    tags: ["quick", "high-fiber"], time: { prep: 10, cook: 15 }, servings: 3,
+    tags: ["quick", "high-fiber", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 15 }, servings: 3,
     ingredients: [
       { id: "pasta_dry", qty: "250 g", grams: 250 },
       { id: "capsicum", qty: "1, sliced", grams: 120 },
@@ -1287,7 +1287,7 @@ const RECIPES = [
   // ---------------- BREAD ----------------
   {
     id: "veg_grilled_sandwich", name: "Vegetable Grilled Sandwich", category: "bread",
-    tags: ["quick", "kids-friendly"], time: { prep: 10, cook: 8 }, servings: 2,
+    tags: ["quick", "kids-friendly", "breakfast", "lunch", "lunchbox-friendly"], time: { prep: 10, cook: 8 }, servings: 2,
     ingredients: [
       { id: "bread_wheat", qty: "4 slices", grams: 120 },
       { id: "cucumber", qty: "1/2, thinly sliced", grams: 75 },
@@ -1308,7 +1308,7 @@ const RECIPES = [
   },
   {
     id: "bread_upma", name: "Bread Upma", category: "bread",
-    tags: ["quick", "one-pot", "leftover-friendly"], time: { prep: 5, cook: 10 }, servings: 2,
+    tags: ["quick", "one-pot", "leftover-friendly", "breakfast"], time: { prep: 5, cook: 10 }, servings: 2,
     ingredients: [
       { id: "bread_white", qty: "6 slices, cubed", grams: 180 },
       { id: "onion", qty: "1 small, chopped", grams: 60 },
@@ -1331,7 +1331,7 @@ const RECIPES = [
   },
   {
     id: "bread_pakora", name: "Bread Pakora", category: "bread",
-    tags: ["quick", "comfort-food"], time: { prep: 10, cook: 10 }, servings: 3,
+    tags: ["quick", "comfort-food", "lunchbox-friendly"], time: { prep: 10, cook: 10 }, servings: 3,
     ingredients: [
       { id: "bread_white", qty: "6 slices", grams: 180 },
       { id: "besan", qty: "1 cup", grams: 100 },
@@ -1350,7 +1350,7 @@ const RECIPES = [
   },
   {
     id: "bread_uttapam", name: "Bread Uttapam", category: "bread",
-    tags: ["quick", "kids-friendly"], time: { prep: 10, cook: 10 }, servings: 2,
+    tags: ["quick", "kids-friendly", "breakfast"], time: { prep: 10, cook: 10 }, servings: 2,
     ingredients: [
       { id: "bread_white", qty: "6 slices", grams: 180 },
       { id: "rava", qty: "1/2 cup", grams: 85 },
@@ -1371,7 +1371,7 @@ const RECIPES = [
   },
   {
     id: "paneer_bruschetta", name: "Paneer & Tomato Bruschetta", category: "bread",
-    tags: ["quick", "no-cook-option", "high-protein"], time: { prep: 10, cook: 5 }, servings: 2,
+    tags: ["quick", "no-cook-option", "high-protein", "lunch"], time: { prep: 10, cook: 5 }, servings: 2,
     ingredients: [
       { id: "bread_wheat", qty: "4 slices", grams: 120 },
       { id: "paneer", qty: "100 g, crumbled", grams: 100 },
@@ -1391,7 +1391,7 @@ const RECIPES = [
   },
   {
     id: "chapati", name: "Chapati (Phulka)", category: "bread",
-    tags: ["quick", "kids-friendly", "make-ahead"], time: { prep: 15, cook: 15 }, servings: 4,
+    tags: ["quick", "kids-friendly", "make-ahead", "breakfast", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 15, cook: 15 }, servings: 4,
     ingredients: [
       { id: "wheat_flour", qty: "2 cups", grams: 240 },
       { id: "ghee", qty: "1 tbsp (for brushing)", grams: 13 },
@@ -1406,7 +1406,7 @@ const RECIPES = [
   },
   {
     id: "poori", name: "Poori", category: "bread",
-    tags: ["comfort-food"], time: { prep: 15, cook: 15 }, servings: 4,
+    tags: ["comfort-food", "breakfast", "lunch", "lunchbox-friendly"], time: { prep: 15, cook: 15 }, servings: 4,
     ingredients: [
       { id: "wheat_flour", qty: "2 cups", grams: 240 },
       { id: "oil", qty: "1 tsp (in the dough) + for deep-frying (about 40 g absorbed)", grams: 45 },
@@ -1423,7 +1423,7 @@ const RECIPES = [
   // ---------------- SNACKS ----------------
   {
     id: "roasted_makhana", name: "Roasted Makhana", category: "snack",
-    tags: ["quick", "no-cook-option", "light"], time: { prep: 2, cook: 8 }, servings: 2,
+    tags: ["quick", "no-cook-option", "light", "lunchbox-friendly"], time: { prep: 2, cook: 8 }, servings: 2,
     ingredients: [
       { id: "makhana", qty: "2 cups", grams: 40 },
       { id: "ghee", qty: "1 tbsp", grams: 13 },
@@ -1440,7 +1440,7 @@ const RECIPES = [
   },
   {
     id: "trail_mix", name: "Nut & Dried Fruit Trail Mix", category: "snack",
-    tags: ["no-cook", "make-ahead", "high-energy"], time: { prep: 5, cook: 0 }, servings: 4,
+    tags: ["no-cook", "make-ahead", "high-energy", "lunchbox-friendly"], time: { prep: 5, cook: 0 }, servings: 4,
     ingredients: [
       { id: "almond", qty: "1/2 cup", grams: 60 },
       { id: "cashew", qty: "1/2 cup", grams: 70 },
@@ -1476,7 +1476,7 @@ const RECIPES = [
   },
   {
     id: "fruit_chaat", name: "Fruit Chaat", category: "snack",
-    tags: ["no-cook", "quick", "dessert-friendly", "high-fiber"], time: { prep: 10, cook: 0 }, servings: 3,
+    tags: ["no-cook", "quick", "dessert-friendly", "high-fiber", "breakfast"], time: { prep: 10, cook: 0 }, servings: 3,
     ingredients: [
       { id: "apple", qty: "1, diced", grams: 180 },
       { id: "banana", qty: "1, sliced", grams: 118 },
@@ -1538,7 +1538,7 @@ const RECIPES = [
   },
   {
     id: "masala_peanuts", name: "Masala Peanuts", category: "snack",
-    tags: ["quick", "high-protein"], time: { prep: 5, cook: 10 }, servings: 3,
+    tags: ["quick", "high-protein", "lunchbox-friendly"], time: { prep: 5, cook: 10 }, servings: 3,
     ingredients: [
       { id: "peanuts", qty: "1.5 cups", grams: 210 },
       { id: "onion", qty: "1/4 cup, finely chopped", grams: 25 },
@@ -1559,7 +1559,7 @@ const RECIPES = [
   },
   {
     id: "veg_cutlet", name: "Vegetable Cutlet", category: "snack",
-    tags: ["comfort-food", "make-ahead"], time: { prep: 15, cook: 15 }, servings: 4,
+    tags: ["comfort-food", "make-ahead", "lunch", "lunchbox-friendly"], time: { prep: 15, cook: 15 }, servings: 4,
     ingredients: [
       { id: "potato", qty: "3 medium, boiled & mashed", grams: 450 },
       { id: "carrot", qty: "1 small, grated", grams: 40 },
@@ -1580,7 +1580,7 @@ const RECIPES = [
   },
   {
     id: "samosa", name: "Baked Vegetable Samosa", category: "snack",
-    tags: ["comfort-food", "make-ahead"], time: { prep: 20, cook: 25 }, servings: 4,
+    tags: ["comfort-food", "make-ahead", "lunch", "lunchbox-friendly"], time: { prep: 20, cook: 25 }, servings: 4,
     ingredients: [
       { id: "maida", qty: "1.5 cups (or wheat flour for a wholemeal version)", grams: 150 },
       { id: "oil", qty: "3 tbsp (dough + brushing)", grams: 42 },
@@ -1622,7 +1622,7 @@ const RECIPES = [
   },
   {
     id: "punugulu", name: "Punugulu", category: "snack",
-    tags: ["andhra", "street-food", "quick"], time: { prep: 10, cook: 15 },
+    tags: ["andhra", "street-food", "quick", "breakfast"], time: { prep: 10, cook: 15 },
     soakNote: "uses leftover fermented idli/dosa batter — plan ahead, or ferment a small batch overnight", servings: 4,
     ingredients: [
       { id: "rice_basmati_raw", qty: "1 cup, soaked (as leftover idli/dosa batter)", grams: 150 },
@@ -1644,7 +1644,7 @@ const RECIPES = [
   },
   {
     id: "vada_pav", name: "Vada Pav", category: "snack",
-    tags: ["street-food", "comfort-food", "maharashtra"], time: { prep: 15, cook: 15 }, servings: 4,
+    tags: ["street-food", "comfort-food", "maharashtra", "lunch", "lunchbox-friendly"], time: { prep: 15, cook: 15 }, servings: 4,
     ingredients: [
       { id: "potato", qty: "4 medium, boiled & mashed", grams: 600 },
       { id: "besan", qty: "1/2 cup (for the batter coating)", grams: 50 },
@@ -1668,7 +1668,7 @@ const RECIPES = [
   },
   {
     id: "coconut_chutney", name: "Coconut Chutney", category: "snack",
-    tags: ["no-cook-finish", "quick", "south-indian"], time: { prep: 10, cook: 3 }, servings: 4,
+    tags: ["no-cook-finish", "quick", "south-indian", "lunchbox-friendly"], time: { prep: 10, cook: 3 }, servings: 4,
     ingredients: [
       { id: "coconut_grated", qty: "1.5 cups", grams: 120 },
       { id: "chana_dal", qty: "2 tbsp, roasted", grams: 20 },
@@ -1690,7 +1690,7 @@ const RECIPES = [
   },
   {
     id: "tomato_chutney", name: "Tomato Chutney", category: "snack",
-    tags: ["quick", "south-indian"], time: { prep: 5, cook: 15 }, servings: 4,
+    tags: ["quick", "south-indian", "lunchbox-friendly"], time: { prep: 5, cook: 15 }, servings: 4,
     ingredients: [
       { id: "tomato", qty: "4 medium", grams: 400 },
       { id: "onion", qty: "1 small", grams: 60 },
@@ -1711,7 +1711,7 @@ const RECIPES = [
   },
   {
     id: "peanut_chutney", name: "Peanut Chutney", category: "snack",
-    tags: ["no-cook-finish", "quick", "andhra"], time: { prep: 8, cook: 3 }, servings: 4,
+    tags: ["no-cook-finish", "quick", "andhra", "lunchbox-friendly"], time: { prep: 8, cook: 3 }, servings: 4,
     ingredients: [
       { id: "peanuts", qty: "1 cup, roasted", grams: 140 },
       { id: "green_chili", qty: "1–2", grams: 8 },
@@ -1732,7 +1732,7 @@ const RECIPES = [
   },
   {
     id: "gongura_pachadi", name: "Gongura Pacchadi (Sorrel Leaves Chutney)", category: "snack",
-    tags: ["andhra", "tangy", "high-fiber"], time: { prep: 10, cook: 15 }, servings: 4,
+    tags: ["andhra", "tangy", "high-fiber", "lunchbox-friendly"], time: { prep: 10, cook: 15 }, servings: 4,
     ingredients: [
       { id: "gongura", qty: "4 cups, chopped leaves", grams: 200 },
       { id: "onion", qty: "1 small", grams: 60 },
@@ -1753,7 +1753,7 @@ const RECIPES = [
   },
   {
     id: "dosakai_pachadi", name: "Dosakai Pacchadi (Yellow Cucumber Chutney)", category: "snack",
-    tags: ["andhra", "no-cook-finish", "quick"], time: { prep: 12, cook: 3 }, servings: 4,
+    tags: ["andhra", "no-cook-finish", "quick", "lunchbox-friendly"], time: { prep: 12, cook: 3 }, servings: 4,
     ingredients: [
       { id: "dosakai", qty: "2 cups, chopped", grams: 300 },
       { id: "green_chili", qty: "2–3", grams: 12 },
@@ -1774,7 +1774,7 @@ const RECIPES = [
   },
   {
     id: "nuvvula_chintapandu_pachadi", name: "Nuvvula Chintapandu Pacchadi (Sesame-Tamarind Chutney)", category: "snack",
-    tags: ["andhra", "no-cook-finish", "quick"], time: { prep: 8, cook: 5 }, servings: 4,
+    tags: ["andhra", "no-cook-finish", "quick", "lunchbox-friendly"], time: { prep: 8, cook: 5 }, servings: 4,
     ingredients: [
       { id: "sesame_seeds", qty: "1/2 cup, roasted", grams: 72 },
       { id: "tamarind_pulp", qty: "2 tbsp", grams: 30 },
@@ -1797,7 +1797,7 @@ const RECIPES = [
   },
   {
     id: "minapa_chintapandu_pachadi", name: "Minapa (Urad Dal) Chintapandu Pacchadi", category: "snack",
-    tags: ["andhra", "tangy", "quick"], time: { prep: 8, cook: 8 }, servings: 4,
+    tags: ["andhra", "tangy", "quick", "lunchbox-friendly"], time: { prep: 8, cook: 8 }, servings: 4,
     ingredients: [
       { id: "urad_dal", qty: "1/2 cup, roasted", grams: 100 },
       { id: "tamarind_pulp", qty: "2 tbsp", grams: 30 },
@@ -1819,7 +1819,7 @@ const RECIPES = [
   },
   {
     id: "andhra_tomato_pachadi", name: "Tomato Pacchadi (Andhra-style)", category: "snack",
-    tags: ["andhra", "tangy", "quick"], time: { prep: 8, cook: 15 }, servings: 4,
+    tags: ["andhra", "tangy", "quick", "lunchbox-friendly"], time: { prep: 8, cook: 15 }, servings: 4,
     ingredients: [
       { id: "tomato", qty: "5 medium", grams: 500 },
       { id: "green_chili", qty: "3–4", grams: 15 },
@@ -1843,7 +1843,7 @@ const RECIPES = [
   // ---------------- DESSERTS ----------------
   {
     id: "rava_kesari", name: "Rava Kesari (Sooji Halwa)", category: "dessert",
-    tags: ["quick", "one-pot", "festive"], time: { prep: 3, cook: 12 }, servings: 4,
+    tags: ["quick", "one-pot", "festive", "breakfast"], time: { prep: 3, cook: 12 }, servings: 4,
     ingredients: [
       { id: "rava", qty: "1 cup", grams: 170 },
       { id: "sugar", qty: "1 cup", grams: 200 },
@@ -1878,7 +1878,7 @@ const RECIPES = [
   },
   {
     id: "besan_ladoo", name: "Besan Ladoo", category: "dessert",
-    tags: ["make-ahead", "festive"], time: { prep: 5, cook: 15 }, servings: 8,
+    tags: ["make-ahead", "festive", "lunchbox-friendly"], time: { prep: 5, cook: 15 }, servings: 8,
     ingredients: [
       { id: "besan", qty: "1.5 cups", grams: 150 },
       { id: "ghee", qty: "1/2 cup", grams: 100 },
@@ -1894,7 +1894,7 @@ const RECIPES = [
   },
   {
     id: "dates_nut_energy_balls", name: "Dates & Nut Energy Balls", category: "dessert",
-    tags: ["no-cook", "make-ahead", "high-energy", "high-fiber"], time: { prep: 15, cook: 0 }, servings: 8,
+    tags: ["no-cook", "make-ahead", "high-energy", "high-fiber", "lunchbox-friendly"], time: { prep: 15, cook: 0 }, servings: 8,
     ingredients: [
       { id: "dates", qty: "16, pitted", grams: 128 },
       { id: "almond", qty: "1/2 cup", grams: 60 },
@@ -1946,7 +1946,7 @@ const RECIPES = [
   },
   {
     id: "puran_poli", name: "Puran Poli", category: "dessert",
-    tags: ["festive", "make-ahead", "maharashtra", "karnataka"], time: { prep: 20, cook: 20 }, servings: 6,
+    tags: ["festive", "make-ahead", "maharashtra", "karnataka", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 20, cook: 20 }, servings: 6,
     ingredients: [
       { id: "chana_dal", qty: "1 cup", grams: 200 },
       { id: "jaggery", qty: "1 cup, grated", grams: 200 },
@@ -2002,7 +2002,7 @@ const RECIPES = [
   },
   {
     id: "chakkera_pongali", name: "Chakkera Pongali (Sweet Pongal with Sugar)", category: "dessert",
-    tags: ["festive", "one-pot", "tamil-nadu"], time: { prep: 5, cook: 25 }, servings: 4,
+    tags: ["festive", "one-pot", "tamil-nadu", "breakfast"], time: { prep: 5, cook: 25 }, servings: 4,
     ingredients: [
       { id: "rice_basmati_raw", qty: "1 cup", grams: 200 },
       { id: "moong_dal", qty: "1/4 cup", grams: 50 },
@@ -2022,7 +2022,7 @@ const RECIPES = [
   },
   {
     id: "bellam_pongali", name: "Bellam Pongali (Sweet Pongal with Jaggery)", category: "dessert",
-    tags: ["festive", "one-pot", "andhra"], time: { prep: 5, cook: 25 }, servings: 4,
+    tags: ["festive", "one-pot", "andhra", "breakfast"], time: { prep: 5, cook: 25 }, servings: 4,
     ingredients: [
       { id: "rice_basmati_raw", qty: "1 cup", grams: 200 },
       { id: "moong_dal", qty: "1/4 cup", grams: 50 },
@@ -2044,7 +2044,7 @@ const RECIPES = [
   // ---------------- PODIS ----------------
   {
     id: "kandi_podi", name: "Kandi Podi (Toor Dal Podi)", category: "podi",
-    tags: ["andhra", "make-ahead", "high-protein"], time: { prep: 5, cook: 15 }, servings: 8,
+    tags: ["andhra", "make-ahead", "high-protein", "lunchbox-friendly"], time: { prep: 5, cook: 15 }, servings: 8,
     ingredients: [
       { id: "toor_dal", qty: "1 cup, roasted", grams: 200 },
       { id: "chana_dal", qty: "1/4 cup, roasted", grams: 50 },
@@ -2065,7 +2065,7 @@ const RECIPES = [
   },
   {
     id: "karvepaku_podi", name: "Karvepaku Podi (Curry Leaves Podi)", category: "podi",
-    tags: ["andhra", "make-ahead"], time: { prep: 10, cook: 15 }, servings: 8,
+    tags: ["andhra", "make-ahead", "lunchbox-friendly"], time: { prep: 10, cook: 15 }, servings: 8,
     ingredients: [
       { id: "curry_leaves", qty: "2 cups, packed", grams: 100 },
       { id: "chana_dal", qty: "1/4 cup, roasted", grams: 50 },
@@ -2085,7 +2085,7 @@ const RECIPES = [
   },
   {
     id: "kobbera_podi", name: "Kobbera Podi (Coconut Podi)", category: "podi",
-    tags: ["andhra", "make-ahead"], time: { prep: 10, cook: 10 }, servings: 8,
+    tags: ["andhra", "make-ahead", "lunchbox-friendly"], time: { prep: 10, cook: 10 }, servings: 8,
     ingredients: [
       { id: "dry_coconut", qty: "1.5 cups, desiccated", grams: 120 },
       { id: "chili_powder", qty: "2 tbsp (or whole dried red chilies)", grams: 14 },
@@ -2104,7 +2104,7 @@ const RECIPES = [
   },
   {
     id: "nuvvula_podi", name: "Nuvvula Podi (Sesame Podi)", category: "podi",
-    tags: ["andhra", "make-ahead", "high-protein"], time: { prep: 8, cook: 10 }, servings: 8,
+    tags: ["andhra", "make-ahead", "high-protein", "lunchbox-friendly"], time: { prep: 8, cook: 10 }, servings: 8,
     ingredients: [
       { id: "sesame_seeds", qty: "1 cup, roasted", grams: 144 },
       { id: "chana_dal", qty: "2 tbsp, roasted", grams: 20 },

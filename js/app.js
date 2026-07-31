@@ -21,6 +21,16 @@
     { id: "45", label: "≤ 45 min", max: 45 },
   ];
 
+  // Meal-time chips use OR logic (any selected tag matches) since a recipe
+  // rarely belongs to more than one meal at once — unlike QUICK_FILTERS
+  // below, which uses AND logic for independent quality tags.
+  const MEAL_FILTERS = [
+    { id: "breakfast", label: "🌅 Breakfast" },
+    { id: "lunch", label: "☀️ Lunch" },
+    { id: "dinner", label: "🌙 Dinner" },
+    { id: "lunchbox-friendly", label: "🥡 Easy to Pack for Lunch" },
+  ];
+
   const QUICK_FILTERS = [
     { id: "high-protein", label: "💪 High-Protein", test: (r) => r.tags.includes("high-protein") },
     { id: "no-cook", label: "🧊 No-Cook", test: (r) => r.tags.some((t) => t.startsWith("no-cook")) },
@@ -39,6 +49,7 @@
 
   let activeCategory = "all";
   let activeTimeFilter = "all";
+  let activeMealFilters = new Set();
   let activeTagFilters = new Set();
   let searchQuery = "";
   let cellPickerTarget = null; // {day, slot}
@@ -134,6 +145,7 @@
     return RECIPES.filter((r) => {
       if (activeCategory !== "all" && r.category !== activeCategory) return false;
       if (timeFilter && r.time.prep + r.time.cook > timeFilter.max) return false;
+      if (activeMealFilters.size > 0 && ![...activeMealFilters].some((tag) => r.tags.includes(tag))) return false;
       if (!recipeMatchesSearch(r, searchQuery)) return false;
       for (const tagId of activeTagFilters) {
         const filter = QUICK_FILTERS.find((f) => f.id === tagId);
@@ -155,6 +167,24 @@
       btn.addEventListener("click", () => {
         activeCategory = c.id;
         renderCategoryFilters();
+        renderRecipeGrid();
+      });
+      el.appendChild(btn);
+    });
+  }
+
+  function renderMealFilters() {
+    const el = document.getElementById("mealFilters");
+    el.innerHTML = "";
+    MEAL_FILTERS.forEach((f) => {
+      const btn = document.createElement("button");
+      btn.className = "chip" + (activeMealFilters.has(f.id) ? " active" : "");
+      btn.type = "button";
+      btn.textContent = f.label;
+      btn.addEventListener("click", () => {
+        if (activeMealFilters.has(f.id)) activeMealFilters.delete(f.id);
+        else activeMealFilters.add(f.id);
+        renderMealFilters();
         renderRecipeGrid();
       });
       el.appendChild(btn);
@@ -654,6 +684,7 @@
 
   // ---------------- Init ----------------
   renderCategoryFilters();
+  renderMealFilters();
   renderTimeFilters();
   renderTagFilters();
   renderRecipeGrid();
