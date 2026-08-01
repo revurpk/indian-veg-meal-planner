@@ -148,6 +148,7 @@
 
   const STORAGE_PLAN = "mealPlanner.plan.v1";
   const STORAGE_CHECKED = "mealPlanner.shoppingChecked.v1";
+  const STORAGE_FAVOURITES = "mealPlanner.favourites.v1";
 
   const RECIPE_BY_ID = Object.fromEntries(RECIPES.map((r) => [r.id, r]));
 
@@ -158,6 +159,7 @@
   let activeTagFilters = new Set();
   let activeAllergenFilters = new Set();
   let quickIdeasOn = false;
+  let favouritesOnly = false;
   let searchQuery = "";
   let cellPickerTarget = null; // {day, slot}
 
@@ -231,6 +233,29 @@
     } catch (e) { /* ignore corrupt storage */ }
     return new Set();
   }
+  // Same defensive shape as the plan and shopping list: only ids that still
+  // exist in RECIPES survive a load, so a stale or hand-edited value cannot
+  // put a phantom recipe in the favourites.
+  function loadFavourites() {
+    try {
+      const raw = localStorage.getItem(STORAGE_FAVOURITES);
+      const parsed = raw ? JSON.parse(raw) : null;
+      if (Array.isArray(parsed)) {
+        return new Set(parsed.filter((id) => typeof id === "string" && RECIPE_BY_ID[id]));
+      }
+    } catch (e) { /* ignore corrupt storage */ }
+    return new Set();
+  }
+  let favourites = loadFavourites();
+  function saveFavourites() {
+    localStorage.setItem(STORAGE_FAVOURITES, JSON.stringify([...favourites]));
+  }
+  function toggleFavourite(id) {
+    if (favourites.has(id)) favourites.delete(id);
+    else favourites.add(id);
+    saveFavourites();
+  }
+
   let checkedItems = loadChecked();
   function saveChecked() {
     localStorage.setItem(STORAGE_CHECKED, JSON.stringify([...checkedItems]));
@@ -257,6 +282,7 @@
       if (activeMealFilters.size > 0 && ![...activeMealFilters].some((tag) => r.tags.includes(tag))) return false;
       if (!recipeMatchesSearch(r, searchQuery)) return false;
       if (quickIdeasOn && !isQuickMealIdea(r)) return false;
+      if (favouritesOnly && !favourites.has(r.id)) return false;
       for (const a of activeAllergenFilters) {
         if (recipeAllergens(r).required.indexOf(a) !== -1) return false;
       }
@@ -379,7 +405,11 @@
   }
 
   // ---------------- Rendering: recipe cards ----------------
-  function buildRecipeCard(recipe, onClick) {
+  function buildRecipeCard(recipe, onClick, showFav) {
+    const wrap = document.createElement("div");
+    wrap.className = "recipe-card-wrap";
+    wrap.dataset.cat = recipe.category;
+
     const card = document.createElement("button");
     card.type = "button";
     card.className = "recipe-card";
@@ -400,7 +430,32 @@
         <div class="recipe-card-kcal">${fmt(nutrition.perServing.kcal)} kcal / serving</div>
       </div>`;
     card.addEventListener("click", () => onClick(recipe));
-    return card;
+    wrap.appendChild(card);
+
+    if (showFav !== false) {
+      const fav = document.createElement("button");
+      fav.type = "button";
+      fav.className = "fav-btn" + (favourites.has(recipe.id) ? " is-fav" : "");
+      const setLabel = () => {
+        const on = favourites.has(recipe.id);
+        fav.textContent = on ? "★" : "☆";
+        fav.setAttribute("aria-pressed", String(on));
+        fav.setAttribute("aria-label", (on ? "Remove " : "Add ") + recipe.name + (on ? " from" : " to") + " favourites");
+        fav.title = on ? "Remove from favourites" : "Add to favourites";
+      };
+      setLabel();
+      fav.addEventListener("click", (e) => {
+        e.stopPropagation();
+        toggleFavourite(recipe.id);
+        fav.classList.toggle("is-fav", favourites.has(recipe.id));
+        setLabel();
+        // Re-render only when the view would otherwise show a stale card.
+        if (favouritesOnly) renderRecipeGrid();
+        else renderFilterState();
+      });
+      wrap.appendChild(fav);
+    }
+    return wrap;
   }
 
   function renderRecipeGrid() {
@@ -410,6 +465,10 @@
     grid.innerHTML = "";
     list.forEach((r) => grid.appendChild(buildRecipeCard(r, openRecipeModal)));
     noResults.hidden = list.length > 0;
+    noResults.textContent =
+      favouritesOnly && favourites.size === 0
+        ? "No favourites yet — tap the ☆ on any recipe to save it here."
+        : "No recipes match your search — try a different ingredient or clear the filters.";
 
     const count = document.getElementById("resultCount");
     count.textContent =
@@ -430,6 +489,7 @@
       activeTagFilters.size +
       activeAllergenFilters.size +
       (quickIdeasOn ? 1 : 0) +
+      (favouritesOnly ? 1 : 0) +
       (searchQuery ? 1 : 0)
     );
   }
@@ -438,6 +498,10 @@
     const advancedCount =
       activeMealFilters.size + activeTagFilters.size + activeAllergenFilters.size;
     document.getElementById("quickIdeasBtn").classList.toggle("active", quickIdeasOn);
+    const favBtn = document.getElementById("favouritesBtn");
+    favBtn.classList.toggle("active", favouritesOnly);
+    favBtn.setAttribute("aria-pressed", String(favouritesOnly));
+    favBtn.textContent = "★ Favourites" + (favourites.size ? " (" + favourites.size + ")" : "");
     const badge = document.getElementById("filterBadge");
     badge.textContent = advancedCount;
     badge.hidden = advancedCount === 0;
@@ -454,6 +518,7 @@
     activeTagFilters = new Set();
     activeAllergenFilters = new Set();
     quickIdeasOn = false;
+    favouritesOnly = false;
     searchQuery = "";
     document.getElementById("searchInput").value = "";
     renderCategoryFilters();
@@ -627,7 +692,7 @@
           showToast(`Added "${recipe.name}" to ${day} ${slot}`);
           renderPlanner();
           renderShoppingList();
-        })
+        }, false)
       )
     );
   }
@@ -1013,6 +1078,10 @@
     e.currentTarget.setAttribute("aria-expanded", String(open));
   });
   document.getElementById("clearFiltersBtn").addEventListener("click", clearAllFilters);
+  document.getElementById("favouritesBtn").addEventListener("click", () => {
+    favouritesOnly = !favouritesOnly;
+    renderRecipeGrid();
+  });
   document.getElementById("quickIdeasBtn").addEventListener("click", () => {
     quickIdeasOn = !quickIdeasOn;
     renderRecipeGrid();

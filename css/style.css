@@ -197,6 +197,27 @@ main { max-width: 1100px; margin: 0 auto; padding: 16px; }
 }
 .recipe-grid-compact { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); margin-top: 10px; }
 
+.recipe-card-wrap { position: relative; display: flex; }
+.recipe-card-wrap > .recipe-card { width: 100%; }
+
+.fav-btn {
+  position: absolute; top: 6px; right: 6px; z-index: 2;
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 1px solid var(--border); background: var(--card-bg);
+  color: var(--text-muted); font-size: 1rem; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow); transition: transform 0.12s, color 0.12s;
+}
+.fav-btn:hover { transform: scale(1.1); color: var(--saffron); }
+.fav-btn.is-fav { color: var(--saffron); border-color: var(--saffron); }
+
+.fav-filter-btn {
+  border: 1px solid var(--border); background: var(--card-bg); color: var(--text-muted);
+  padding: 9px 14px; border-radius: 999px; font-size: 0.82rem; font-weight: 700;
+  white-space: nowrap;
+}
+.fav-filter-btn.active { background: var(--saffron); color: #fff; border-color: var(--saffron); }
+
 .recipe-card {
   background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow);
   overflow: hidden; text-align: left; border: 1px solid var(--border);
@@ -347,7 +368,7 @@ main { max-width: 1100px; margin: 0 auto; padding: 16px; }
 
 /* ---------- Print (Export → Print / Save as PDF) ---------- */
 @media print {
-  .no-print, .topbar, .search-bar, .filter-row, .modal-overlay, .toast, .install-btn { display: none !important; }
+  .fav-btn, .no-print, .topbar, .search-bar, .filter-row, .modal-overlay, .toast, .install-btn { display: none !important; }
   body, .view { background: #fff; color: #000; }
   main { max-width: none; padding: 0; }
   .planner-day, .shopping-item, .recipe-card { box-shadow: none; border: 1px solid #999; }

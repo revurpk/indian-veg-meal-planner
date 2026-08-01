@@ -95,6 +95,10 @@ real HTTP origin, so `http://` is recommended over `file://`).
 - **Sandwich patties** — four patties built to be cooled, packed and
   eaten hours later (masala potato & pea, paneer & corn, rajma & oat, and
   a raw banana & peanut one that is Jain-friendly by construction).
+- **Favourites** — tap the star on any recipe card to save it; the
+  **Favourites** button filters to just those and shows a running count.
+  Saved to localStorage and validated on load, so ids that no longer
+  exist are dropped rather than showing phantom entries.
 - **Export any single recipe** — from the recipe page, Export hands the
   full recipe (ingredients with optional substitutes, method, nutrition,
   allergens and reflux notes) to the OS share sheet on mobile or downloads
