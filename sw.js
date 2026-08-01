@@ -1,5 +1,5 @@
 /* Copyright 2026 Pradyumna Revur — Apache-2.0 (see LICENSE) */
-const CACHE_NAME = "meal-planner-v22";
+const CACHE_NAME = "meal-planner-v23";
 const APP_SHELL = [
   "./",
   "./index.html",

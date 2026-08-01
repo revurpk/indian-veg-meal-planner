@@ -11,6 +11,7 @@
     { id: "snack", label: "Snacks", emoji: "🥗" },
     { id: "dessert", label: "Desserts", emoji: "🍮" },
     { id: "podi", label: "Podis", emoji: "🧂" },
+    { id: "drink", label: "Drinks", emoji: "🥤" },
   ];
   const CATEGORY_EMOJI = Object.fromEntries(CATEGORIES.map((c) => [c.id, c.emoji]));
   const CATEGORY_ORDER = CATEGORIES.map((c) => c.id);
@@ -81,6 +82,46 @@
     });
   }
 
+  // Allergens come from the ingredient database. An allergen carried only by
+  // an ingredient the recipe marks optional is reported separately, since the
+  // dish can still be made free of it by leaving that ingredient out.
+  function recipeAllergens(recipe) {
+    const required = new Set();
+    const optionalOnly = new Set();
+    recipe.ingredients.forEach((ing) => {
+      const data = INGREDIENTS[ing.id];
+      if (!data || !data.allergens) return;
+      data.allergens.forEach((a) => (ing.optional ? optionalOnly : required).add(a));
+    });
+    required.forEach((a) => optionalOnly.delete(a));
+    return { required: [...required].sort(), optionalOnly: [...optionalOnly].sort() };
+  }
+
+  // Commonly cited dietary reflux triggers. Individual tolerance varies a great
+  // deal, so this reports which triggers are present rather than pretending to
+  // be a verdict — see the disclaimer shown alongside it.
+  function refluxTriggers(recipe) {
+    return recipe.ingredients
+      .filter((ing) => (INGREDIENTS[ing.id] || {}).gerdTrigger)
+      .map((ing) => ({ name: INGREDIENTS[ing.id].name, optional: !!ing.optional }));
+  }
+
+  function refluxLevel(recipe) {
+    const required = refluxTriggers(recipe).filter((t) => !t.optional).length;
+    if (required === 0) return "low";
+    if (required <= 2) return "moderate";
+    return "high";
+  }
+
+  const ALLERGEN_LABELS = {
+    dairy: "Dairy", gluten: "Gluten", "tree-nut": "Tree nuts",
+    peanut: "Peanuts", soy: "Soy", sesame: "Sesame", mustard: "Mustard",
+  };
+
+  const ALLERGEN_FILTERS = Object.keys(ALLERGEN_LABELS).map((id) => ({
+    id, label: "No " + ALLERGEN_LABELS[id].toLowerCase(),
+  }));
+
   const QUICK_FILTERS = [
     { id: "high-protein", label: "💪 High-Protein", test: (r) => r.tags.includes("high-protein") },
     { id: "no-cook", label: "🧊 No-Cook", test: (r) => r.tags.some((t) => t.startsWith("no-cook")) },
@@ -88,7 +129,19 @@
     { id: "kid-friendly", label: "🧒 Kid-Friendly", test: (r) => r.tags.includes("kid-friendly") },
     { id: "one-pot", label: "🍳 One-Pot", test: (r) => r.tags.includes("one-pot") },
     { id: "jain-friendly", label: "🪷 Jain-Friendly", test: isJainFriendly },
+    { id: "reflux-friendly", label: "🫀 Reflux-Friendly", test: (r) => refluxLevel(r) === "low" },
   ];
+
+  // "Quick meal ideas": fast, savoury and actually nourishing — deliberately
+  // excludes drinks and desserts, which are quick but not a meal.
+  const SAVOURY_CATEGORIES = ["soup", "main", "pasta", "bread", "snack"];
+  function isQuickMealIdea(r) {
+    return (
+      r.time.prep + r.time.cook <= 25 &&
+      SAVOURY_CATEGORIES.indexOf(r.category) !== -1 &&
+      (r.tags.includes("high-protein") || r.tags.includes("high-fiber"))
+    );
+  }
 
   const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   const SLOTS = ["Breakfast", "Lunch", "Snack", "Dinner"];
@@ -103,6 +156,8 @@
   let activeTimeFilter = "all";
   let activeMealFilters = new Set();
   let activeTagFilters = new Set();
+  let activeAllergenFilters = new Set();
+  let quickIdeasOn = false;
   let searchQuery = "";
   let cellPickerTarget = null; // {day, slot}
 
@@ -201,6 +256,10 @@
       if (cuisine && cuisine.tags.length && !cuisine.tags.some((t) => r.tags.includes(t))) return false;
       if (activeMealFilters.size > 0 && ![...activeMealFilters].some((tag) => r.tags.includes(tag))) return false;
       if (!recipeMatchesSearch(r, searchQuery)) return false;
+      if (quickIdeasOn && !isQuickMealIdea(r)) return false;
+      for (const a of activeAllergenFilters) {
+        if (recipeAllergens(r).required.indexOf(a) !== -1) return false;
+      }
       for (const tagId of activeTagFilters) {
         const filter = QUICK_FILTERS.find((f) => f.id === tagId);
         if (filter && !filter.test(r)) return false;
@@ -283,6 +342,24 @@
     });
   }
 
+  function renderAllergenFilters() {
+    const el = document.getElementById("allergenFilters");
+    el.innerHTML = "";
+    ALLERGEN_FILTERS.forEach((f) => {
+      const btn = document.createElement("button");
+      btn.className = "chip" + (activeAllergenFilters.has(f.id) ? " active" : "");
+      btn.type = "button";
+      btn.textContent = f.label;
+      btn.addEventListener("click", () => {
+        if (activeAllergenFilters.has(f.id)) activeAllergenFilters.delete(f.id);
+        else activeAllergenFilters.add(f.id);
+        renderAllergenFilters();
+        renderRecipeGrid();
+      });
+      el.appendChild(btn);
+    });
+  }
+
   function renderTagFilters() {
     const el = document.getElementById("tagFilters");
     el.innerHTML = "";
@@ -351,12 +428,16 @@
       (activeTimeFilter !== "all" ? 1 : 0) +
       activeMealFilters.size +
       activeTagFilters.size +
+      activeAllergenFilters.size +
+      (quickIdeasOn ? 1 : 0) +
       (searchQuery ? 1 : 0)
     );
   }
 
   function renderFilterState() {
-    const advancedCount = activeMealFilters.size + activeTagFilters.size;
+    const advancedCount =
+      activeMealFilters.size + activeTagFilters.size + activeAllergenFilters.size;
+    document.getElementById("quickIdeasBtn").classList.toggle("active", quickIdeasOn);
     const badge = document.getElementById("filterBadge");
     badge.textContent = advancedCount;
     badge.hidden = advancedCount === 0;
@@ -371,6 +452,8 @@
     activeTimeFilter = "all";
     activeMealFilters = new Set();
     activeTagFilters = new Set();
+    activeAllergenFilters = new Set();
+    quickIdeasOn = false;
     searchQuery = "";
     document.getElementById("searchInput").value = "";
     renderCategoryFilters();
@@ -378,6 +461,7 @@
     renderTimeSelect();
     renderMealFilters();
     renderTagFilters();
+    renderAllergenFilters();
     renderRecipeGrid();
   }
 
@@ -419,6 +503,39 @@
 
       <div class="section-title">Steps</div>
       <ol class="steps-list">${recipe.steps.map((s) => `<li>${s}</li>`).join("")}</ol>
+
+      <div class="section-title">Allergens &amp; sensitivities</div>
+      ${(() => {
+        const al = recipeAllergens(recipe);
+        const trig = refluxTriggers(recipe);
+        const level = refluxLevel(recipe);
+        const rows = [];
+        rows.push(
+          `<p class="sens-row"><b>Contains:</b> ${
+            al.required.length
+              ? al.required.map((a) => `<span class="allergen-pill">${ALLERGEN_LABELS[a]}</span>`).join("")
+              : "<span class=\"sens-none\">none of the major allergens tracked here</span>"
+          }</p>`
+        );
+        if (al.optionalOnly.length) {
+          rows.push(
+            `<p class="sens-row"><b>Only from optional items:</b> ${al.optionalOnly
+              .map((a) => `<span class="allergen-pill allergen-pill-opt">${ALLERGEN_LABELS[a]}</span>`)
+              .join("")} — leave those out to avoid it.</p>`
+          );
+        }
+        rows.push(
+          `<p class="sens-row"><b>Acid reflux:</b> <span class="reflux-badge reflux-${level}">${level}</span> ${
+            trig.length
+              ? "— contains " + trig.map((t) => t.name.toLowerCase() + (t.optional ? " (optional)" : "")).join(", ")
+              : "— none of the common dietary triggers"
+          }</p>`
+        );
+        rows.push(
+          '<p class="nutrition-note">Allergen and reflux notes are computed from the ingredient list as general guidance only. Reflux triggers vary a lot between individuals, and this is not medical or dietary advice — check labels yourself and follow your own clinician where relevant.</p>'
+        );
+        return rows.join("");
+      })()}
 
       <div class="section-title">Nutrition per serving</div>
       <table class="nutrition-table">
@@ -801,6 +918,10 @@
     e.currentTarget.setAttribute("aria-expanded", String(open));
   });
   document.getElementById("clearFiltersBtn").addEventListener("click", clearAllFilters);
+  document.getElementById("quickIdeasBtn").addEventListener("click", () => {
+    quickIdeasOn = !quickIdeasOn;
+    renderRecipeGrid();
+  });
 
   // ---------------- Toast ----------------
   let toastTimer = null;
@@ -839,6 +960,7 @@
   renderTimeSelect();
   renderMealFilters();
   renderTagFilters();
+  renderAllergenFilters();
 
   renderRecipeGrid();
   renderPlanner();

@@ -39,6 +39,7 @@
 [data-cat="snack"]   { --cat: #16a34a; --cat-soft: #dcfce7; }
 [data-cat="dessert"] { --cat: #db2777; --cat-soft: #fce7f3; }
 [data-cat="podi"]    { --cat: #b45309; --cat-soft: #fde8d0; }
+[data-cat="drink"]   { --cat: #0891b2; --cat-soft: #cffafe; }
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -63,6 +64,7 @@
   [data-cat="snack"]   { --cat: #4ade80; --cat-soft: rgba(74, 222, 128, 0.15); }
   [data-cat="dessert"] { --cat: #f472b6; --cat-soft: rgba(244, 114, 182, 0.15); }
   [data-cat="podi"]    { --cat: #fb923c; --cat-soft: rgba(251, 146, 60, 0.15); }
+  [data-cat="drink"]   { --cat: #22d3ee; --cat-soft: rgba(34, 211, 238, 0.15); }
 }
 
 * { box-sizing: border-box; }
@@ -351,4 +353,37 @@ main { max-width: 1100px; margin: 0 auto; padding: 16px; }
   .planner-day, .shopping-item, .recipe-card { box-shadow: none; border: 1px solid #999; }
   .planner-cell { background: #fff; }
   a[href]:after { content: none !important; }
+}
+
+/* ---------- Quick meal ideas + allergen / reflux info ---------- */
+.idea-btn {
+  border: 1px solid var(--saffron); background: #fffbeb; color: #b45309;
+  padding: 9px 14px; border-radius: 999px; font-size: 0.82rem; font-weight: 700;
+}
+.idea-btn.active { background: var(--saffron); color: #fff; border-color: var(--saffron); }
+@media (prefers-color-scheme: dark) {
+  .idea-btn { background: rgba(245, 158, 11, 0.14); color: #fbbf24; }
+}
+
+.sens-row { font-size: 0.87rem; margin: 0 0 8px; }
+.sens-none { color: var(--text-muted); }
+.allergen-pill {
+  display: inline-block; font-size: 0.7rem; font-weight: 700;
+  background: #fef2f2; color: #b91c1c; padding: 2px 8px;
+  border-radius: 999px; margin: 0 4px 4px 0;
+}
+.allergen-pill-opt { background: #f5f3ff; color: #6d28d9; }
+.reflux-badge {
+  display: inline-block; font-size: 0.7rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.04em; padding: 2px 8px; border-radius: 999px;
+}
+.reflux-low { background: #ecfdf5; color: #047857; }
+.reflux-moderate { background: #fffbeb; color: #b45309; }
+.reflux-high { background: #fef2f2; color: #b91c1c; }
+@media (prefers-color-scheme: dark) {
+  .allergen-pill { background: rgba(239, 68, 68, 0.16); color: #fca5a5; }
+  .allergen-pill-opt { background: rgba(139, 92, 246, 0.18); color: #c4b5fd; }
+  .reflux-low { background: rgba(16, 185, 129, 0.18); color: #6ee7b7; }
+  .reflux-moderate { background: rgba(245, 158, 11, 0.18); color: #fcd34d; }
+  .reflux-high { background: rgba(239, 68, 68, 0.18); color: #fca5a5; }
 }

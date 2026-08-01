@@ -21,8 +21,8 @@ real HTTP origin, so `http://` is recommended over `file://`).
 
 ## Features
 
-- **169 recipes** across soups, mains, pasta, bread-based dishes, snacks,
-  desserts and podis — all original recipe text. Includes pan-Indian
+- **183 recipes** across soups, mains, pasta, bread-based dishes, snacks,
+  desserts, podis and drinks — all original recipe text. Includes pan-Indian
   staples (samosa, chapati, poori), Indo-Chinese vegetable fried rice, and
   South Indian regional dishes from Andhra Pradesh, Tamil Nadu, Kerala,
   Karnataka and Maharashtra: idli, dosa, pesarattu, sambar/onion sambar,
@@ -75,6 +75,23 @@ real HTTP origin, so `http://` is recommended over `file://`).
   database (alliums, root vegetables, fungi, brinjal, sprouts, honey)
   disqualify a recipe unless it marks them optional, so the tag stays
   correct as recipes change. See `isJainFriendly()` in `js/app.js`.
+- **Drinks** — 14 non-alcoholic juices, coolers and hot drinks: masala
+  chai, South Indian filter coffee, mango lassi, masala chaas, nimbu
+  pani, aam panna, jaljeera, badam milk, panakam, rose milk, watermelon
+  & mint cooler, golden milk, banana & date smoothie, and mint & lemon
+  iced tea.
+- **Allergen and reflux information** — each recipe lists the major
+  allergens it contains (dairy, gluten, tree nuts, peanuts, soy, sesame,
+  mustard), separating out any carried *only* by an optional ingredient
+  so you can see what leaving it out buys you. It also reports which
+  commonly cited dietary reflux triggers are present, with a low /
+  moderate / high indicator. Both are computed from the ingredient
+  database, not hand-maintained. A **Free from** filter group excludes
+  recipes by allergen, and a **Reflux-Friendly** chip shows the ones with
+  no required triggers.
+- **Quick meal ideas** — one button for when you cannot decide: fast
+  (≤25 min), savoury (no drinks or desserts) and actually nourishing
+  (high-protein or high-fibre).
 - **Sandwich patties** — four patties built to be cooled, packed and
   eaten hours later (masala potato & pea, paneer & corn, rajma & oat, and
   a raw banana & peanut one that is Jain-friendly by construction).
@@ -110,11 +127,20 @@ python -m uv pip install --python .venv/Scripts/python.exe pillow
 .venv/Scripts/python.exe icons/generate_icons.py
 ```
 
-## Notes on nutrition data
+## Notes on nutrition, allergen and reflux data
 
 Values are standard per-100g nutrition figures (not tied to any single
 copyrighted source) and are estimates — actual nutrition varies by brand,
 ripeness, and cooking technique.
+
+Allergen and reflux notes are derived from the ingredient list as general
+guidance, and are **not medical or dietary advice**. Allergen flags cover
+the major categories tracked in `js/ingredients.js` only; they cannot
+account for cross-contamination, "may contain" warnings, or how a
+particular brand is processed, so always check labels yourself. Reflux
+triggers vary considerably between individuals — the indicator reports
+which commonly cited triggers a recipe contains, not whether it will
+affect you. Follow your own clinician where relevant.
 
 ## License
 
