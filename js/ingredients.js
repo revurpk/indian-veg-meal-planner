@@ -145,6 +145,7 @@ const INGREDIENTS = {
   makki_flour: { name: "Maize flour (makki ka atta)", cat: "Grains", kcal: 361, protein: 6.9, carbs: 76.9, fat: 3.9, fiber: 7.3 },
   rice_flour: { name: "Rice flour", cat: "Grains", kcal: 366, protein: 6, carbs: 80, fat: 1.4, fiber: 2.4 },
   sattu: { name: "Sattu (roasted gram flour)", cat: "Grains", kcal: 413, protein: 20.6, carbs: 60, fat: 5.2, fiber: 18 },
+  putnalu: { name: "Putnalu (roasted gram / dalia)", cat: "Pulses", kcal: 369, protein: 22.5, carbs: 58, fat: 5.2, fiber: 15 },
   yeast: { name: "Dry active yeast", cat: "Grains", kcal: 325, protein: 40.4, carbs: 41.2, fat: 7.6, fiber: 26.9 },
 
   // Pulses, beans, soy
