@@ -69,12 +69,25 @@
     { id: "lunchbox-friendly", label: "🥡 Easy to Pack for Lunch" },
   ];
 
+  // A recipe is Jain-friendly when nothing a strict Jain diet excludes is
+  // *required* — ingredients flagged jainAvoid in the database (alliums, root
+  // vegetables, fungi, brinjal, sprouts, honey) are acceptable only when the
+  // recipe marks them optional and offers a substitute. Computed rather than
+  // hand-tagged so it stays correct as recipes change.
+  function isJainFriendly(recipe) {
+    return recipe.ingredients.every((ing) => {
+      const data = INGREDIENTS[ing.id];
+      return !data || !data.jainAvoid || ing.optional;
+    });
+  }
+
   const QUICK_FILTERS = [
     { id: "high-protein", label: "💪 High-Protein", test: (r) => r.tags.includes("high-protein") },
     { id: "no-cook", label: "🧊 No-Cook", test: (r) => r.tags.some((t) => t.startsWith("no-cook")) },
     { id: "make-ahead", label: "📦 Make-Ahead", test: (r) => r.tags.includes("make-ahead") },
     { id: "kid-friendly", label: "🧒 Kid-Friendly", test: (r) => r.tags.includes("kid-friendly") },
     { id: "one-pot", label: "🍳 One-Pot", test: (r) => r.tags.includes("one-pot") },
+    { id: "jain-friendly", label: "🪷 Jain-Friendly", test: isJainFriendly },
   ];
 
   const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
@@ -304,7 +317,9 @@
           <span>⏱ ${totalTime} min${recipe.soakNote ? " *" : ""}</span>
           <span>🍽 ${recipe.servings} servings</span>
         </div>
-        <div class="recipe-card-tags">${recipe.tags.slice(0, 3).map((t) => `<span class="tag-pill">${t}</span>`).join("")}</div>
+        <div class="recipe-card-tags">${recipe.tags.slice(0, 3).map((t) => `<span class="tag-pill">${t}</span>`).join("")}${
+          isJainFriendly(recipe) ? '<span class="tag-pill tag-pill-jain">🪷 jain</span>' : ""
+        }</div>
         <div class="recipe-card-kcal">${fmt(nutrition.perServing.kcal)} kcal / serving</div>
       </div>`;
     card.addEventListener("click", () => onClick(recipe));
@@ -383,13 +398,22 @@
         <span>⏱ Prep ${recipe.time.prep} min + Cook ${recipe.time.cook} min${recipe.soakNote ? ` (${recipe.soakNote})` : ""}</span>
         <span>🍽 Serves ${recipe.servings}</span>
       </div>
-      <div class="recipe-detail-tags">${recipe.tags.map((t) => `<span class="tag-pill">${t}</span>`).join("")}</div>
+      <div class="recipe-detail-tags">${recipe.tags.map((t) => `<span class="tag-pill">${t}</span>`).join("")}${
+        isJainFriendly(recipe) ? '<span class="tag-pill tag-pill-jain">🪷 jain-friendly</span>' : ""
+      }</div>
+      ${isJainFriendly(recipe)
+        ? '<p class="jain-note">Jain-friendly as written once the ingredients marked <em>optional</em> below are left out or swapped for the substitute given.</p>'
+        : ""}
 
       <div class="section-title">Ingredients</div>
       <ul class="ingredient-list">
         ${recipe.ingredients.map((ing) => {
           const data = INGREDIENTS[ing.id];
-          return `<li><span>${data ? data.name : ing.id}</span><span class="ing-qty">${ing.qty}</span></li>`;
+          const name = data ? data.name : ing.id;
+          const opt = ing.optional
+            ? `<span class="ing-optional">optional${ing.sub ? ` — ${ing.sub}` : ""}</span>`
+            : "";
+          return `<li><span>${name}${opt}</span><span class="ing-qty">${ing.qty}</span></li>`;
         }).join("")}
       </ul>
 

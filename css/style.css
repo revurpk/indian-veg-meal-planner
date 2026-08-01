@@ -215,6 +215,18 @@ main { max-width: 1100px; margin: 0 auto; padding: 16px; }
   font-size: 0.68rem; background: var(--cat-soft); color: var(--cat); padding: 2px 7px;
   border-radius: 999px; font-weight: 700;
 }
+.tag-pill-jain { background: #ecfdf5; color: #047857; }
+@media (prefers-color-scheme: dark) {
+  .tag-pill-jain { background: rgba(16, 185, 129, 0.18); color: #6ee7b7; }
+}
+.ing-optional {
+  display: block; font-size: 0.74rem; color: var(--text-muted);
+  font-style: italic; margin-top: 2px;
+}
+.jain-note {
+  font-size: 0.8rem; color: var(--text-muted); background: var(--cat-soft);
+  border-radius: 8px; padding: 8px 10px; margin: 0 0 14px;
+}
 .recipe-card-kcal { margin-top: auto; font-size: 0.78rem; color: var(--text-muted); font-weight: 600; }
 
 /* ---------- Modal ---------- */

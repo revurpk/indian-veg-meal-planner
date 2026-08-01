@@ -21,7 +21,7 @@ real HTTP origin, so `http://` is recommended over `file://`).
 
 ## Features
 
-- **165 recipes** across soups, mains, pasta, bread-based dishes, snacks,
+- **169 recipes** across soups, mains, pasta, bread-based dishes, snacks,
   desserts and podis — all original recipe text. Includes pan-Indian
   staples (samosa, chapati, poori), Indo-Chinese vegetable fried rice, and
   South Indian regional dishes from Andhra Pradesh, Tamil Nadu, Kerala,
@@ -64,8 +64,20 @@ real HTTP origin, so `http://` is recommended over `file://`).
   cuisines; recipes still carry their specific region tag) and time budget
   (≤15/30/45 min) dropdowns, plus a **More filters** panel holding
   Breakfast/Lunch/Dinner/Easy to Pack for Lunch and the quality tags
-  (High-Protein, No-Cook, Make-Ahead, Kid-Friendly, One-Pot). A live
-  result count and one-tap **Clear all** keep the current state obvious.
+  (High-Protein, No-Cook, Make-Ahead, Kid-Friendly, One-Pot,
+  Jain-Friendly). A live result count and one-tap **Clear all** keep the
+  current state obvious.
+- **Jain-friendly filter** — onion, garlic and ginger are marked
+  *optional* with a substitute wherever they are a flavour accent rather
+  than the dish itself (shredded cabbage for onion in dry dishes, a pinch
+  of hing for garlic, dry ginger powder for fresh). The Jain tag is then
+  *computed*, not hand-maintained: ingredients flagged `jainAvoid` in the
+  database (alliums, root vegetables, fungi, brinjal, sprouts, honey)
+  disqualify a recipe unless it marks them optional, so the tag stays
+  correct as recipes change. See `isJainFriendly()` in `js/app.js`.
+- **Sandwich patties** — four patties built to be cooled, packed and
+  eaten hours later (masala potato & pea, paneer & corn, rajma & oat, and
+  a raw banana & peanut one that is Jain-friendly by construction).
 - **Weekly planner** — assign recipes to Breakfast/Lunch/Snack/Dinner across
   the week, with per-day and per-week calorie totals. Saved to
   `localStorage`.
