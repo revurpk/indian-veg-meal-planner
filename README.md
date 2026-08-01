@@ -21,12 +21,13 @@ real HTTP origin, so `http://` is recommended over `file://`).
 
 ## Features
 
-- **156 recipes** across soups, mains, pasta, bread-based dishes, snacks,
+- **158 recipes** across soups, mains, pasta, bread-based dishes, snacks,
   desserts and podis — all original recipe text. Includes pan-Indian
   staples (samosa, chapati, poori), Indo-Chinese vegetable fried rice, and
   South Indian regional dishes from Andhra Pradesh, Tamil Nadu, Kerala,
   Karnataka and Maharashtra: idli, dosa, pesarattu, sambar/onion sambar,
-  rasam, pulusu, avial, bisi bele bath, ven/chakkera/bellam pongal,
+  rasam, tomato/majjiga pulusu, pindi miriyam, avial, bisi bele bath,
+  ven/chakkera/bellam pongal,
   punugulu, misal pav, vada pav, vermicelli upma and payasam, rice
   payasam, a full set of Andhra vegetable koora and dal pappu side
   dishes (brinjal, carrot, beans, chayote, broad beans, okra, ivy gourd,
