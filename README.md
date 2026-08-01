@@ -45,10 +45,11 @@ real HTTP origin, so `http://` is recommended over `file://`).
   margherita, pesto), French ratatouille, Spanish (patatas bravas,
   churros), Turkish and Ukrainian soups, Mexican (guacamole, quesadilla,
   tacos, elote), Japanese, Thai, Chinese, Korean, Vietnamese, Indonesian,
-  Ethiopian and Moroccan dishes. Dishes normally made with fish sauce,
-  shrimp paste, dashi or egg (Thai green curry, gado-gado, miso soup,
-  churros, falafel) carry explicit notes on keeping them vegetarian, and
-  cheeses are specified as vegetarian-rennet.
+  Ethiopian and Moroccan dishes. Every recipe is written as a vegetarian
+  dish in its own right, not as an adaptation of a non-vegetarian one.
+  Where a shop-bought ingredient is commonly not vegetarian (Thai curry
+  paste, gochujang, wheat noodles, hard cheeses), the recipe says to pick
+  one labelled vegetarian.
 - **Ingredient nutrition database** (`js/ingredients.js`) with calories,
   protein, carbs, fat and fiber per 100 g; every recipe's nutrition is
   computed live from its ingredient list and serving count.

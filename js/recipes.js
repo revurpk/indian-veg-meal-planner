@@ -2768,7 +2768,7 @@ const RECIPES = [
       { id: "salt", qty: "to taste", grams: 4 },
     ],
     steps: [
-      "Soak the dried chickpeas overnight and drain thoroughly — they stay raw, and this is what holds falafel together without egg. Canned or boiled chickpeas will disintegrate in the oil.",
+      "Soak the dried chickpeas overnight and drain thoroughly — they stay raw, and that starchy rawness is what binds the falafel. Canned or boiled chickpeas will disintegrate in the oil.",
       "Pulse the drained chickpeas with onion, garlic, herbs and spices to a coarse, couscous-like texture. Do not puree it smooth.",
       "Mix in the besan, baking soda and salt, and chill 30 minutes if you have time. Shape into small balls or patties, pressing firmly.",
       "Deep-fry in batches at moderate heat for 3–4 minutes until deep brown and crisp. Serve in pita with hummus and salad.",
@@ -3165,7 +3165,7 @@ const RECIPES = [
       { id: "mushroom", qty: "1 cup, sliced (shiitake if available)", grams: 70 },
     ],
     steps: [
-      "Make a vegetarian kombu dashi: soak the kombu in 5 cups cold water for 20 minutes, then heat slowly and remove it just before the water boils. (Standard Japanese dashi uses bonito flakes — kombu alone keeps this fully vegetarian and still deeply savoury.)",
+      "Make a kombu dashi: soak the kombu in 5 cups cold water for 20 minutes, then heat slowly and lift it out just before the water boils — kombu alone gives a clear, deeply savoury broth.",
       "Add the mushrooms and simmer 4–5 minutes, then add the tofu and warm through.",
       "Take the pot off the heat. Whisk the miso with a ladleful of the hot broth in a small bowl until smooth, then stir it back in.",
       "Never boil the soup after adding miso — it destroys the aroma and turns it grainy. Serve at once, scattered with spring onion.",
@@ -3182,7 +3182,7 @@ const RECIPES = [
       { id: "green_beans", qty: "1 cup, cut", grams: 100 },
       { id: "capsicum", qty: "1, sliced", grams: 120 },
       { id: "bamboo_shoots", qty: "1/2 cup, sliced", grams: 75 },
-      { id: "soy_sauce", qty: "2 tbsp (in place of fish sauce)", grams: 32 },
+      { id: "soy_sauce", qty: "2 tbsp", grams: 32 },
       { id: "sugar", qty: "2 tsp (palm sugar)", grams: 8 },
       { id: "basil", qty: "1/2 cup Thai basil", grams: 20 },
       { id: "lime", qty: "1, juiced", grams: 15 },
@@ -3190,7 +3190,7 @@ const RECIPES = [
       { id: "salt", qty: "to taste", grams: 2 },
     ],
     steps: [
-      "Check the curry paste carefully — most commercial Thai pastes contain shrimp paste or fish sauce, so buy one explicitly labelled vegetarian or make your own.",
+      "Check the curry paste carefully — many commercial Thai pastes are not vegetarian, so buy one explicitly labelled vegetarian or make your own.",
       "Fry the paste in oil with the thick cream from the top of the coconut milk for 3–4 minutes until it darkens and the oil separates. This blooming step is what stops the curry tasting raw and flat.",
       "Add the rest of the coconut milk, soy sauce and sugar, then the vegetables in order of hardness; simmer 10–12 minutes.",
       "Add the tofu, warm through, and finish off the heat with Thai basil and lime juice. Serve with jasmine rice.",
@@ -3207,7 +3207,7 @@ const RECIPES = [
       { id: "tofu", qty: "200 g, cubed", grams: 200 },
       { id: "tomato", qty: "1 medium, wedges", grams: 100 },
       { id: "green_chili", qty: "2, crushed", grams: 10 },
-      { id: "soy_sauce", qty: "2 tbsp (in place of fish sauce)", grams: 32 },
+      { id: "soy_sauce", qty: "2 tbsp", grams: 32 },
       { id: "lime", qty: "2, juiced", grams: 30 },
       { id: "sugar", qty: "1.5 tsp", grams: 6 },
       { id: "coriander_leaves", qty: "1/4 cup", grams: 10 },
@@ -3221,7 +3221,7 @@ const RECIPES = [
     ],
   },
   {
-    id: "mapo_tofu_veg", name: "Vegetarian Mapo Tofu", category: "main",
+    id: "mapo_tofu_veg", name: "Mapo Tofu", category: "main",
     tags: ["chinese", "quick", "high-protein", "spicy", "lunch", "dinner"], time: { prep: 10, cook: 15 }, servings: 4,
     ingredients: [
       { id: "tofu", qty: "500 g soft/silken, cubed", grams: 500 },
@@ -3238,7 +3238,7 @@ const RECIPES = [
     ],
     steps: [
       "Slide the tofu cubes into lightly salted simmering water for 2 minutes and drain — this firms them just enough to survive stirring.",
-      "Fry the finely chopped mushrooms in oil over high heat until browned and dry; they stand in for the minced pork and give the dish its savoury body.",
+      "Fry the finely chopped mushrooms in oil over high heat until browned and dry; they cook down to a dark, chewy crumble that carries the sauce and gives the dish its savoury body.",
       "Add garlic, ginger and the chili bean paste and fry 1 minute until the oil turns red, then add 1 cup water and the soy sauce.",
       "Slide in the tofu and simmer 4–5 minutes, pushing gently rather than stirring so the cubes stay whole. Thicken with cornflour slurry, finish with sesame oil, ground pepper and spring onion, and serve with rice.",
     ],
@@ -3262,7 +3262,7 @@ const RECIPES = [
       { id: "salt", qty: "to taste", grams: 3 },
     ],
     steps: [
-      "Boil the noodles until just done, drain, rinse under cold water and toss with a teaspoon of oil so they do not clump. Check the packet — pick an egg-free wheat noodle.",
+      "Boil the noodles until just done, drain, rinse under cold water and toss with a teaspoon of oil so they do not clump. Check the packet and pick a plain wheat noodle marked suitable for vegetarians.",
       "Heat a wok until smoking, add oil, then garlic and ginger for a few seconds.",
       "Add all the vegetables and stir-fry on the highest heat for 2–3 minutes; they must stay crunchy, so keep everything moving and do not cover the pan.",
       "Add the noodles, soy sauce, vinegar, pepper and salt, and toss vigorously for 2 minutes. Finish with sesame oil and spring onion greens.",
@@ -3316,7 +3316,7 @@ const RECIPES = [
     steps: [
       "Prepare each vegetable separately, seasoning as you go: blanch the spinach and dress with sesame oil, garlic and salt; blanch the sprouts and do the same; sauté the carrot and the mushrooms individually with a splash of soy sauce.",
       "Pan-fry the tofu cubes until golden on all sides.",
-      "Mix the gochujang with sesame oil, sugar and a splash of water into a pourable sauce. Check the label — most gochujang is vegetarian, but a few brands add anchovy.",
+      "Mix the gochujang with sesame oil, sugar and a splash of water into a pourable sauce. Check the label and pick a gochujang marked vegetarian — a few brands are not.",
       "Arrange the hot rice in bowls and lay each vegetable in its own section on top, with the tofu in the middle. Add sesame seeds and the sauce, and mix everything together thoroughly at the table — that mixing is what bibimbap means.",
     ],
   },
@@ -3344,7 +3344,7 @@ const RECIPES = [
       "Blanch each vegetable briefly and separately so everything keeps its own colour and bite, then cool. Fry the tofu until golden.",
       "For the sauce, fry garlic and chili, then add peanut butter, coconut milk, tamarind, palm sugar, soy sauce and enough hot water to make a thick, pourable sauce; simmer 5 minutes.",
       "Balance the sauce carefully — it should be nutty, sweet, sour and salty all at once. Adjust with lime and sugar until no one note dominates.",
-      "Arrange the vegetables, potato and tofu on a platter and pour the warm peanut sauce generously over just before serving. (Gado-gado often includes boiled egg; this version leaves it out and adds extra tofu instead.)",
+      "Arrange the vegetables, potato and tofu on a platter and pour the warm peanut sauce generously over just before serving. The generous amount of tofu here makes the platter substantial enough to stand as a full meal.",
     ],
   },
 
@@ -3437,7 +3437,7 @@ const RECIPES = [
     ],
     steps: [
       "Bring 1 cup water, the butter, 1 tsp sugar and salt to a rolling boil, then tip in all the flour at once and beat hard with a wooden spoon until it forms a smooth ball that leaves the sides of the pan.",
-      "Cool for 5 minutes, then transfer to a piping bag with a star nozzle. The ridges are not decorative — they are what makes churros crisp rather than doughy. (This is a classic eggless choux-style dough, so no egg is needed.)",
+      "Cool for 5 minutes, then transfer to a piping bag with a star nozzle. The ridges are not decorative — they are what makes churros crisp rather than doughy. The dough is a simple flour-and-water choux, which is what lets it pipe cleanly and puff in the oil.",
       "Pipe 12 cm lengths straight into moderately hot oil, snipping with scissors, and fry until deep golden all over, about 2 minutes per side.",
       "Drain and roll in cinnamon sugar while hot. For the sauce, warm the milk with cocoa, the remaining sugar and cornflour until thick, and serve alongside for dipping.",
     ],

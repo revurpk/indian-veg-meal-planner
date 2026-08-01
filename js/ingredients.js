@@ -138,7 +138,7 @@ const INGREDIENTS = {
   arborio_rice: { name: "Arborio rice", cat: "Grains", kcal: 358, protein: 6.7, carbs: 80, fat: 0.6, fiber: 1.4 },
   bulgur: { name: "Bulgur wheat", cat: "Grains", kcal: 342, protein: 12.3, carbs: 76, fat: 1.3, fiber: 18.3 },
   couscous: { name: "Couscous", cat: "Grains", kcal: 376, protein: 12.8, carbs: 77.4, fat: 0.6, fiber: 5 },
-  noodles_wheat: { name: "Wheat noodles (hakka/egg-free)", cat: "Grains", kcal: 348, protein: 11.5, carbs: 71, fat: 1.8, fiber: 3 },
+  noodles_wheat: { name: "Wheat noodles (hakka)", cat: "Grains", kcal: 348, protein: 11.5, carbs: 71, fat: 1.8, fiber: 3 },
   rice_paper: { name: "Rice paper wrappers", cat: "Grains", kcal: 330, protein: 1.5, carbs: 81, fat: 0.2, fiber: 2 },
   tortilla: { name: "Wheat tortilla", cat: "Grains", kcal: 306, protein: 8.2, carbs: 51, fat: 7.5, fiber: 3 },
   phyllo_pastry: { name: "Phyllo pastry", cat: "Grains", kcal: 299, protein: 7.1, carbs: 52.5, fat: 5.8, fiber: 1.8 },
