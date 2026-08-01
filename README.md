@@ -95,6 +95,11 @@ real HTTP origin, so `http://` is recommended over `file://`).
 - **Sandwich patties** — four patties built to be cooled, packed and
   eaten hours later (masala potato & pea, paneer & corn, rajma & oat, and
   a raw banana & peanut one that is Jain-friendly by construction).
+- **Export any single recipe** — from the recipe page, Export hands the
+  full recipe (ingredients with optional substitutes, method, nutrition,
+  allergens and reflux notes) to the OS share sheet on mobile or downloads
+  it as a text file, and Print produces a clean single-recipe page with
+  the app chrome and buttons stripped out.
 - **Weekly planner** — assign recipes to Breakfast/Lunch/Snack/Dinner across
   the week, with per-day and per-week calorie totals. Saved to
   `localStorage`.

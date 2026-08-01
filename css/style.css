@@ -353,6 +353,18 @@ main { max-width: 1100px; margin: 0 auto; padding: 16px; }
   .planner-day, .shopping-item, .recipe-card { box-shadow: none; border: 1px solid #999; }
   .planner-cell { background: #fff; }
   a[href]:after { content: none !important; }
+
+  /* Single-recipe print: drop the page behind and let the open modal through */
+  body.printing-recipe main { display: none !important; }
+  body.printing-recipe .modal-overlay:not([hidden]) {
+    display: block !important; position: static; background: none; inset: auto;
+  }
+  body.printing-recipe .modal {
+    max-width: none; max-height: none; overflow: visible;
+    box-shadow: none; border-radius: 0; padding: 0;
+  }
+  body.printing-recipe .modal-close { display: none !important; }
+  body.printing-recipe .primary-btn { display: none !important; }
 }
 
 /* ---------- Quick meal ideas + allergen / reflux info ---------- */
@@ -387,3 +399,6 @@ main { max-width: 1100px; margin: 0 auto; padding: 16px; }
   .reflux-moderate { background: rgba(245, 158, 11, 0.18); color: #fcd34d; }
   .reflux-high { background: rgba(239, 68, 68, 0.18); color: #fca5a5; }
 }
+
+.recipe-actions { display: flex; gap: 8px; margin-top: 10px; }
+.recipe-actions .ghost-btn { flex: 1; }

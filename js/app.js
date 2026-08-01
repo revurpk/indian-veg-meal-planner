@@ -548,9 +548,17 @@
       <p class="nutrition-note">Whole recipe (${recipe.servings} servings): ${fmt(nutrition.total.kcal)} kcal total. Estimates from standard ingredient nutrition values — actual values vary by brand and technique.</p>
 
       <button class="primary-btn" id="addToPlanBtn" type="button">+ Add to weekly plan</button>
+      <div class="recipe-actions no-print">
+        <button class="ghost-btn" id="exportRecipeBtn" type="button">⬇ Export recipe</button>
+        <button class="ghost-btn" id="printRecipeBtn" type="button">🖨 Print recipe</button>
+      </div>
     `;
 
     document.getElementById("addToPlanBtn").addEventListener("click", () => openPlanPicker(recipe));
+    document.getElementById("exportRecipeBtn").addEventListener("click", () =>
+      shareOrDownload(recipeFileName(recipe), recipe.name, buildRecipeExportText(recipe))
+    );
+    document.getElementById("printRecipeBtn").addEventListener("click", () => printRecipe());
     modal.hidden = false;
   }
 
@@ -841,6 +849,93 @@
     });
     lines.push(`Week total: ${fmt(weekKcal)} kcal`);
     return lines.join("\n");
+  }
+
+  function recipeFileName(recipe) {
+    return recipe.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") + ".txt";
+  }
+
+  function buildRecipeExportText(recipe) {
+    const n = computeNutrition(recipe);
+    const al = recipeAllergens(recipe);
+    const trig = refluxTriggers(recipe);
+    const cat = (CATEGORIES.find((x) => x.id === recipe.category) || {}).label || recipe.category;
+    const L = [];
+
+    L.push(recipe.name.toUpperCase());
+    L.push(
+      `${cat} · ${recipe.time.prep + recipe.time.cook} min` +
+        (recipe.soakNote ? ` (${recipe.soakNote})` : "") +
+        ` · serves ${recipe.servings}`
+    );
+    if (recipe.tags.length) L.push("Tags: " + recipe.tags.join(", "));
+    if (isJainFriendly(recipe)) {
+      L.push("Jain-friendly once the optional items below are left out or substituted.");
+    }
+
+    L.push("", "INGREDIENTS");
+    recipe.ingredients.forEach((ing) => {
+      const data = INGREDIENTS[ing.id];
+      const name = data ? data.name : ing.id;
+      let line = `  ${name} — ${ing.qty}`;
+      if (ing.optional) line += ing.sub ? `  [optional: ${ing.sub}]` : "  [optional]";
+      L.push(line);
+    });
+
+    L.push("", "METHOD");
+    recipe.steps.forEach((s, i) => L.push(`  ${i + 1}. ${s}`));
+
+    L.push("", "NUTRITION (per serving)");
+    L.push(`  Calories      ${fmt(n.perServing.kcal)} kcal`);
+    L.push(`  Protein       ${fmt(n.perServing.protein, 1)} g`);
+    L.push(`  Carbohydrates ${fmt(n.perServing.carbs, 1)} g`);
+    L.push(`  Fat           ${fmt(n.perServing.fat, 1)} g`);
+    L.push(`  Fiber         ${fmt(n.perServing.fiber, 1)} g`);
+    L.push(`  Whole recipe (${recipe.servings} servings): ${fmt(n.total.kcal)} kcal`);
+
+    L.push("", "ALLERGENS & SENSITIVITIES");
+    L.push(
+      "  Contains: " +
+        (al.required.length
+          ? al.required.map((a) => ALLERGEN_LABELS[a]).join(", ")
+          : "none of the major allergens tracked here")
+    );
+    if (al.optionalOnly.length) {
+      L.push(
+        "  Only from optional items: " +
+          al.optionalOnly.map((a) => ALLERGEN_LABELS[a]).join(", ") +
+          " (leave those out to avoid it)"
+      );
+    }
+    L.push(
+      `  Acid reflux: ${refluxLevel(recipe)}` +
+        (trig.length
+          ? " — contains " + trig.map((t) => t.name.toLowerCase() + (t.optional ? " (optional)" : "")).join(", ")
+          : " — none of the common dietary triggers")
+    );
+    L.push(
+      "  Note: nutrition, allergen and reflux figures are computed from the",
+      "  ingredient list as general guidance. They cannot account for brand or",
+      "  cross-contamination, and are not medical or dietary advice."
+    );
+
+    L.push("", `Exported from Veg Meal Planner on ${new Date().toLocaleDateString()}.`);
+    return L.join("\n");
+  }
+
+  // The print stylesheet hides modals so the planner and list print cleanly.
+  // Printing a single recipe therefore needs its own mode: hide the page
+  // behind and let the open modal through, then restore afterwards.
+  function printRecipe() {
+    document.body.classList.add("printing-recipe");
+    const cleanup = () => {
+      document.body.classList.remove("printing-recipe");
+      window.removeEventListener("afterprint", cleanup);
+    };
+    window.addEventListener("afterprint", cleanup);
+    window.print();
+    // afterprint is unreliable in some mobile browsers, so belt-and-braces.
+    setTimeout(cleanup, 3000);
   }
 
   function buildShoppingExportText() {
