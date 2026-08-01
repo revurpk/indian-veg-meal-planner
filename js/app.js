@@ -15,42 +15,41 @@
   const CATEGORY_EMOJI = Object.fromEntries(CATEGORIES.map((c) => [c.id, c.emoji]));
   const CATEGORY_ORDER = CATEGORIES.map((c) => c.id);
 
-  // Cuisine/region chips. Each id is a tag already carried by the recipes.
+  // Cuisine options. Each entry maps to one *or more* recipe tags: the
+  // subcontinent regions are rolled up into broad groups here so the dropdown
+  // stays short, while the recipes keep their specific tag (andhra, bengali,
+  // …) for display on the cards.
   const CUISINES = [
-    { id: "all", label: "🌍 All cuisines" },
-    { id: "andhra", label: "Andhra" },
-    { id: "tamil-nadu", label: "Tamil Nadu" },
-    { id: "kerala", label: "Kerala" },
-    { id: "karnataka", label: "Karnataka" },
-    { id: "maharashtra", label: "Maharashtra" },
-    { id: "south-indian", label: "South Indian" },
-    { id: "bengali", label: "Bengali" },
-    { id: "gujarati", label: "Gujarati" },
-    { id: "punjabi", label: "Punjabi" },
-    { id: "rajasthani", label: "Rajasthani" },
-    { id: "kashmiri", label: "Kashmiri" },
-    { id: "bihari", label: "Bihari" },
-    { id: "odia", label: "Odia" },
-    { id: "sindhi", label: "Sindhi" },
-    { id: "nepali", label: "Nepali" },
-    { id: "sri-lankan", label: "Sri Lankan" },
-    { id: "middle-eastern", label: "Middle Eastern" },
-    { id: "turkish", label: "Turkish" },
-    { id: "greek", label: "Greek" },
-    { id: "italian", label: "Italian" },
-    { id: "french", label: "French" },
-    { id: "spanish", label: "Spanish" },
-    { id: "ukrainian", label: "Ukrainian" },
-    { id: "mexican", label: "Mexican" },
-    { id: "chinese", label: "Chinese" },
-    { id: "indo-chinese", label: "Indo-Chinese" },
-    { id: "japanese", label: "Japanese" },
-    { id: "korean", label: "Korean" },
-    { id: "thai", label: "Thai" },
-    { id: "vietnamese", label: "Vietnamese" },
-    { id: "indonesian", label: "Indonesian" },
-    { id: "ethiopian", label: "Ethiopian" },
-    { id: "moroccan", label: "Moroccan" },
+    { id: "all", label: "🌍 All cuisines", tags: [] },
+
+    { id: "south-indian", label: "South Indian", group: "Indian subcontinent",
+      tags: ["south-indian", "andhra", "tamil-nadu", "kerala", "karnataka"] },
+    { id: "north-indian", label: "North Indian", group: "Indian subcontinent",
+      tags: ["punjabi", "kashmiri"] },
+    { id: "east-indian", label: "East Indian", group: "Indian subcontinent",
+      tags: ["bengali", "odia", "bihari"] },
+    { id: "west-indian", label: "West Indian", group: "Indian subcontinent",
+      tags: ["gujarati", "maharashtra", "rajasthani", "sindhi"] },
+    { id: "himalayan-lankan", label: "Nepali & Sri Lankan", group: "Indian subcontinent",
+      tags: ["nepali", "sri-lankan"] },
+
+    { id: "middle-eastern", label: "Middle Eastern", group: "Around the world", tags: ["middle-eastern"] },
+    { id: "turkish", label: "Turkish", group: "Around the world", tags: ["turkish"] },
+    { id: "greek", label: "Greek", group: "Around the world", tags: ["greek"] },
+    { id: "italian", label: "Italian", group: "Around the world", tags: ["italian"] },
+    { id: "french", label: "French", group: "Around the world", tags: ["french"] },
+    { id: "spanish", label: "Spanish", group: "Around the world", tags: ["spanish"] },
+    { id: "ukrainian", label: "Ukrainian", group: "Around the world", tags: ["ukrainian"] },
+    { id: "mexican", label: "Mexican", group: "Around the world", tags: ["mexican"] },
+    { id: "chinese", label: "Chinese", group: "Around the world", tags: ["chinese"] },
+    { id: "indo-chinese", label: "Indo-Chinese", group: "Around the world", tags: ["indo-chinese"] },
+    { id: "japanese", label: "Japanese", group: "Around the world", tags: ["japanese"] },
+    { id: "korean", label: "Korean", group: "Around the world", tags: ["korean"] },
+    { id: "thai", label: "Thai", group: "Around the world", tags: ["thai"] },
+    { id: "vietnamese", label: "Vietnamese", group: "Around the world", tags: ["vietnamese"] },
+    { id: "indonesian", label: "Indonesian", group: "Around the world", tags: ["indonesian"] },
+    { id: "ethiopian", label: "Ethiopian", group: "Around the world", tags: ["ethiopian"] },
+    { id: "moroccan", label: "Moroccan", group: "Around the world", tags: ["moroccan"] },
   ];
 
   const TIME_FILTERS = [
@@ -74,7 +73,7 @@
     { id: "high-protein", label: "💪 High-Protein", test: (r) => r.tags.includes("high-protein") },
     { id: "no-cook", label: "🧊 No-Cook", test: (r) => r.tags.some((t) => t.startsWith("no-cook")) },
     { id: "make-ahead", label: "📦 Make-Ahead", test: (r) => r.tags.includes("make-ahead") },
-    { id: "kids-friendly", label: "🧒 Kids-Friendly", test: (r) => r.tags.includes("kids-friendly") },
+    { id: "kid-friendly", label: "🧒 Kid-Friendly", test: (r) => r.tags.includes("kid-friendly") },
     { id: "one-pot", label: "🍳 One-Pot", test: (r) => r.tags.includes("one-pot") },
   ];
 
@@ -182,10 +181,11 @@
 
   function getFilteredRecipes() {
     const timeFilter = TIME_FILTERS.find((f) => f.id === activeTimeFilter);
+    const cuisine = CUISINES.find((c) => c.id === activeCuisine);
     return RECIPES.filter((r) => {
       if (activeCategory !== "all" && r.category !== activeCategory) return false;
       if (timeFilter && r.time.prep + r.time.cook > timeFilter.max) return false;
-      if (activeCuisine !== "all" && !r.tags.includes(activeCuisine)) return false;
+      if (cuisine && cuisine.tags.length && !cuisine.tags.some((t) => r.tags.includes(t))) return false;
       if (activeMealFilters.size > 0 && ![...activeMealFilters].some((tag) => r.tags.includes(tag))) return false;
       if (!recipeMatchesSearch(r, searchQuery)) return false;
       for (const tagId of activeTagFilters) {
@@ -225,10 +225,22 @@
   function renderCuisineSelect() {
     const el = document.getElementById("cuisineSelect");
     // Only offer cuisines that actually have recipes, so the list can't go stale.
-    const available = CUISINES.filter((c) => c.id === "all" || RECIPES.some((r) => r.tags.includes(c.id)));
-    el.innerHTML = available
-      .map((c) => `<option value="${c.id}">${c.label}</option>`)
-      .join("");
+    const available = CUISINES.filter(
+      (c) => !c.tags.length || RECIPES.some((r) => c.tags.some((t) => r.tags.includes(t)))
+    );
+    let html = "";
+    let openGroup = null;
+    available.forEach((c) => {
+      const g = c.group || null;
+      if (g !== openGroup) {
+        if (openGroup) html += "</optgroup>";
+        if (g) html += `<optgroup label="${g}">`;
+        openGroup = g;
+      }
+      html += `<option value="${c.id}">${c.label}</option>`;
+    });
+    if (openGroup) html += "</optgroup>";
+    el.innerHTML = html;
     el.value = activeCuisine;
     el.classList.toggle("is-set", activeCuisine !== "all");
   }

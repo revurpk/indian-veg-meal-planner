@@ -58,10 +58,11 @@ real HTTP origin, so `http://` is recommended over `file://`).
   snack/dessert/podi) carries its own accent through the chips, card
   borders and recipe pages, so the grid is scannable at a glance.
 - **Consolidated filters** — one row of category chips, then a compact bar
-  with cuisine (33 regions, Andhra to Ethiopian) and time budget
+  with cuisine (subcontinent rolled up into five groups, plus 17 world
+  cuisines; recipes still carry their specific region tag) and time budget
   (≤15/30/45 min) dropdowns, plus a **More filters** panel holding
   Breakfast/Lunch/Dinner/Easy to Pack for Lunch and the quality tags
-  (High-Protein, No-Cook, Make-Ahead, Kids-Friendly, One-Pot). A live
+  (High-Protein, No-Cook, Make-Ahead, Kid-Friendly, One-Pot). A live
   result count and one-tap **Clear all** keep the current state obvious.
 - **Weekly planner** — assign recipes to Breakfast/Lunch/Snack/Dinner across
   the week, with per-day and per-week calorie totals. Saved to

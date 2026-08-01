@@ -7,7 +7,7 @@ const RECIPES = [
   // ---------------- SOUPS ----------------
   {
     id: "tomato_soup", name: "Tomato Soup", category: "soup",
-    tags: ["quick", "one-pot", "kids-friendly", "dinner"], time: { prep: 5, cook: 15 }, servings: 3,
+    tags: ["quick", "one-pot", "kid-friendly", "dinner"], time: { prep: 5, cook: 15 }, servings: 3,
     ingredients: [
       { id: "tomato", qty: "5 medium", grams: 500 },
       { id: "onion", qty: "1 small", grams: 60 },
@@ -27,7 +27,7 @@ const RECIPES = [
   },
   {
     id: "sweet_corn_soup", name: "Sweet Corn Soup", category: "soup",
-    tags: ["quick", "one-pot", "kids-friendly", "dinner"], time: { prep: 5, cook: 15 }, servings: 3,
+    tags: ["quick", "one-pot", "kid-friendly", "dinner"], time: { prep: 5, cook: 15 }, servings: 3,
     ingredients: [
       { id: "corn", qty: "1.5 cups kernels", grams: 220 },
       { id: "carrot", qty: "1 small, finely diced", grams: 40 },
@@ -160,7 +160,7 @@ const RECIPES = [
   // ---------------- MAINS ----------------
   {
     id: "jeera_rice", name: "Jeera Rice", category: "main",
-    tags: ["quick", "one-pot", "kids-friendly", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 5, cook: 20 }, servings: 3,
+    tags: ["quick", "one-pot", "kid-friendly", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 5, cook: 20 }, servings: 3,
     ingredients: [
       { id: "rice_basmati_raw", qty: "1.5 cups", grams: 300 },
       { id: "cumin_seeds", qty: "1.5 tsp", grams: 3 },
@@ -266,7 +266,7 @@ const RECIPES = [
   },
   {
     id: "paneer_bhurji", name: "Paneer Bhurji", category: "main",
-    tags: ["quick", "high-protein", "kids-friendly", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 5, cook: 10 }, servings: 3,
+    tags: ["quick", "high-protein", "kid-friendly", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 5, cook: 10 }, servings: 3,
     ingredients: [
       { id: "paneer", qty: "250 g, crumbled", grams: 250 },
       { id: "onion", qty: "1 medium, chopped", grams: 100 },
@@ -373,7 +373,7 @@ const RECIPES = [
   },
   {
     id: "curd_rice", name: "Curd Rice", category: "main",
-    tags: ["no-cook-finish", "quick", "cooling", "kids-friendly", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 5 }, servings: 3,
+    tags: ["no-cook-finish", "quick", "cooling", "kid-friendly", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 5 }, servings: 3,
     ingredients: [
       { id: "rice_cooked", qty: "2 cups, cooled", grams: 300 },
       { id: "curd", qty: "1.5 cups", grams: 370 },
@@ -395,7 +395,7 @@ const RECIPES = [
   },
   {
     id: "poha", name: "Poha", category: "main",
-    tags: ["quick", "one-pot", "breakfast", "kids-friendly", "lunchbox-friendly"], time: { prep: 5, cook: 10 }, servings: 3,
+    tags: ["quick", "one-pot", "breakfast", "kid-friendly", "lunchbox-friendly"], time: { prep: 5, cook: 10 }, servings: 3,
     ingredients: [
       { id: "poha", qty: "2 cups thick poha", grams: 150 },
       { id: "onion", qty: "1 medium, chopped", grams: 100 },
@@ -419,7 +419,7 @@ const RECIPES = [
   },
   {
     id: "upma", name: "Upma", category: "main",
-    tags: ["quick", "one-pot", "breakfast", "kids-friendly", "lunchbox-friendly"], time: { prep: 5, cook: 15 }, servings: 3,
+    tags: ["quick", "one-pot", "breakfast", "kid-friendly", "lunchbox-friendly"], time: { prep: 5, cook: 15 }, servings: 3,
     ingredients: [
       { id: "rava", qty: "1 cup", grams: 170 },
       { id: "onion", qty: "1 small, chopped", grams: 60 },
@@ -441,7 +441,7 @@ const RECIPES = [
   },
   {
     id: "vermicelli_upma", name: "Vermicelli Upma (Semiya Upma)", category: "main",
-    tags: ["quick", "one-pot", "breakfast", "kids-friendly", "lunchbox-friendly"], time: { prep: 5, cook: 15 }, servings: 3,
+    tags: ["quick", "one-pot", "breakfast", "kid-friendly", "lunchbox-friendly"], time: { prep: 5, cook: 15 }, servings: 3,
     ingredients: [
       { id: "vermicelli", qty: "1.5 cups", grams: 150 },
       { id: "onion", qty: "1 small, chopped", grams: 60 },
@@ -907,7 +907,7 @@ const RECIPES = [
   },
   {
     id: "aloo_fry", name: "Aloo Fry", category: "main",
-    tags: ["quick", "kids-friendly", "comfort-food", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 15 }, servings: 3,
+    tags: ["quick", "kid-friendly", "comfort-food", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 15 }, servings: 3,
     ingredients: [
       { id: "potato", qty: "3 medium, chopped", grams: 450 },
       { id: "mustard_seeds", qty: "1/2 tsp", grams: 1.5 },
@@ -1242,7 +1242,7 @@ const RECIPES = [
   },
   {
     id: "veg_mac_cheese", name: "Creamy Vegetable Mac and Cheese", category: "pasta",
-    tags: ["comfort-food", "kids-friendly", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 20 }, servings: 3,
+    tags: ["comfort-food", "kid-friendly", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 10, cook: 20 }, servings: 3,
     ingredients: [
       { id: "pasta_dry", qty: "250 g (elbow macaroni)", grams: 250 },
       { id: "milk", qty: "1.5 cups", grams: 360 },
@@ -1287,7 +1287,7 @@ const RECIPES = [
   // ---------------- BREAD ----------------
   {
     id: "veg_grilled_sandwich", name: "Vegetable Grilled Sandwich", category: "bread",
-    tags: ["quick", "kids-friendly", "breakfast", "lunch", "lunchbox-friendly"], time: { prep: 10, cook: 8 }, servings: 2,
+    tags: ["quick", "kid-friendly", "breakfast", "lunch", "lunchbox-friendly"], time: { prep: 10, cook: 8 }, servings: 2,
     ingredients: [
       { id: "bread_wheat", qty: "4 slices", grams: 120 },
       { id: "cucumber", qty: "1/2, thinly sliced", grams: 75 },
@@ -1350,7 +1350,7 @@ const RECIPES = [
   },
   {
     id: "bread_uttapam", name: "Bread Uttapam", category: "bread",
-    tags: ["quick", "kids-friendly", "breakfast"], time: { prep: 10, cook: 10 }, servings: 2,
+    tags: ["quick", "kid-friendly", "breakfast"], time: { prep: 10, cook: 10 }, servings: 2,
     ingredients: [
       { id: "bread_white", qty: "6 slices", grams: 180 },
       { id: "rava", qty: "1/2 cup", grams: 85 },
@@ -1391,7 +1391,7 @@ const RECIPES = [
   },
   {
     id: "chapati", name: "Chapati (Phulka)", category: "bread",
-    tags: ["quick", "kids-friendly", "make-ahead", "breakfast", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 15, cook: 15 }, servings: 4,
+    tags: ["quick", "kid-friendly", "make-ahead", "breakfast", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 15, cook: 15 }, servings: 4,
     ingredients: [
       { id: "wheat_flour", qty: "2 cups", grams: 240 },
       { id: "ghee", qty: "1 tbsp (for brushing)", grams: 13 },
@@ -1517,7 +1517,7 @@ const RECIPES = [
   },
   {
     id: "corn_chaat", name: "Corn Chaat", category: "snack",
-    tags: ["quick", "kids-friendly", "high-fiber"], time: { prep: 5, cook: 8 }, servings: 2,
+    tags: ["quick", "kid-friendly", "high-fiber"], time: { prep: 5, cook: 8 }, servings: 2,
     ingredients: [
       { id: "corn", qty: "1.5 cups kernels", grams: 220 },
       { id: "onion", qty: "1/4 cup, finely chopped", grams: 25 },
@@ -1927,7 +1927,7 @@ const RECIPES = [
   },
   {
     id: "fruit_custard", name: "Fruit Custard", category: "dessert",
-    tags: ["make-ahead", "kids-friendly", "cooling"], time: { prep: 10, cook: 10 }, servings: 4,
+    tags: ["make-ahead", "kid-friendly", "cooling"], time: { prep: 10, cook: 10 }, servings: 4,
     ingredients: [
       { id: "milk", qty: "3 cups", grams: 720 },
       { id: "custard_powder", qty: "2.5 tbsp", grams: 25 },
@@ -1964,7 +1964,7 @@ const RECIPES = [
   },
   {
     id: "vermicelli_payasam", name: "Vermicelli Payasam (Semiya Payasam)", category: "dessert",
-    tags: ["quick", "festive", "kids-friendly"], time: { prep: 5, cook: 20 }, servings: 4,
+    tags: ["quick", "festive", "kid-friendly"], time: { prep: 5, cook: 20 }, servings: 4,
     ingredients: [
       { id: "vermicelli", qty: "1 cup", grams: 100 },
       { id: "milk", qty: "4 cups", grams: 960 },
@@ -2931,7 +2931,7 @@ const RECIPES = [
   },
   {
     id: "margherita_pizza", name: "Margherita Pizza", category: "bread",
-    tags: ["italian", "kids-friendly", "comfort-food", "lunch", "dinner"], time: { prep: 25, cook: 15 },
+    tags: ["italian", "kid-friendly", "comfort-food", "lunch", "dinner"], time: { prep: 25, cook: 15 },
     soakNote: "plus 1–2 hrs for the dough to rise", servings: 3,
     ingredients: [
       { id: "maida", qty: "2.5 cups (or bread flour)", grams: 250 },
@@ -2997,7 +2997,7 @@ const RECIPES = [
   },
   {
     id: "patatas_bravas", name: "Patatas Bravas", category: "snack",
-    tags: ["spanish", "comfort-food", "kids-friendly"], time: { prep: 10, cook: 30 }, servings: 4,
+    tags: ["spanish", "comfort-food", "kid-friendly"], time: { prep: 10, cook: 30 }, servings: 4,
     ingredients: [
       { id: "potato", qty: "700 g, cut into chunks", grams: 700 },
       { id: "tomato_puree", qty: "1 cup", grams: 240 },
@@ -3087,7 +3087,7 @@ const RECIPES = [
   },
   {
     id: "bean_quesadilla", name: "Black Bean & Cheese Quesadilla", category: "bread",
-    tags: ["mexican", "quick", "kids-friendly", "high-protein", "lunch", "lunchbox-friendly"], time: { prep: 10, cook: 10 }, servings: 3,
+    tags: ["mexican", "quick", "kid-friendly", "high-protein", "lunch", "lunchbox-friendly"], time: { prep: 10, cook: 10 }, servings: 3,
     ingredients: [
       { id: "tortilla", qty: "4 large wheat tortillas", grams: 250 },
       { id: "black_beans", qty: "1.5 cups, cooked", grams: 250 },
@@ -3133,7 +3133,7 @@ const RECIPES = [
   },
   {
     id: "elote", name: "Elote (Mexican Street Corn)", category: "snack",
-    tags: ["mexican", "quick", "kids-friendly", "street-food"], time: { prep: 5, cook: 12 }, servings: 4,
+    tags: ["mexican", "quick", "kid-friendly", "street-food"], time: { prep: 5, cook: 12 }, servings: 4,
     ingredients: [
       { id: "corn", qty: "4 whole cobs", grams: 600 },
       { id: "hung_curd", qty: "1/3 cup (in place of crema)", grams: 70 },
@@ -3245,7 +3245,7 @@ const RECIPES = [
   },
   {
     id: "hakka_noodles", name: "Vegetable Hakka Noodles", category: "main",
-    tags: ["indo-chinese", "quick", "kids-friendly", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 12, cook: 12 }, servings: 3,
+    tags: ["indo-chinese", "quick", "kid-friendly", "lunch", "dinner", "lunchbox-friendly"], time: { prep: 12, cook: 12 }, servings: 3,
     ingredients: [
       { id: "noodles_wheat", qty: "250 g", grams: 250 },
       { id: "cabbage", qty: "1.5 cups, shredded", grams: 135 },
@@ -3423,7 +3423,7 @@ const RECIPES = [
   },
   {
     id: "churros", name: "Churros", category: "dessert",
-    tags: ["spanish", "kids-friendly", "comfort-food"], time: { prep: 15, cook: 20 }, servings: 5,
+    tags: ["spanish", "kid-friendly", "comfort-food"], time: { prep: 15, cook: 20 }, servings: 5,
     ingredients: [
       { id: "maida", qty: "1.25 cups", grams: 125 },
       { id: "butter", qty: "2 tbsp", grams: 28 },
