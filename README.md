@@ -54,11 +54,15 @@ real HTTP origin, so `http://` is recommended over `file://`).
   computed live from its ingredient list and serving count.
 - **Search by name or ingredient** — e.g. searching "paneer" or "mushroom"
   surfaces every recipe that uses it, not just ones with it in the title.
-- **Category, cuisine, meal-time, time and quick filters** — dish type
-  (soup/main/pasta/bread/snack/dessert/podi), cuisine/region (33 of them,
-  from Andhra to Ethiopian), Breakfast/Lunch/Dinner/Easy to Pack for Lunch,
-  time budget (≤15/30/45 min), and quality tags (High-Protein, No-Cook,
-  Make-Ahead, Kids-Friendly, One-Pot).
+- **Colour-coded categories** — each dish type (soup/main/pasta/bread/
+  snack/dessert/podi) carries its own accent through the chips, card
+  borders and recipe pages, so the grid is scannable at a glance.
+- **Consolidated filters** — one row of category chips, then a compact bar
+  with cuisine (33 regions, Andhra to Ethiopian) and time budget
+  (≤15/30/45 min) dropdowns, plus a **More filters** panel holding
+  Breakfast/Lunch/Dinner/Easy to Pack for Lunch and the quality tags
+  (High-Protein, No-Cook, Make-Ahead, Kids-Friendly, One-Pot). A live
+  result count and one-tap **Clear all** keep the current state obvious.
 - **Weekly planner** — assign recipes to Breakfast/Lunch/Snack/Dinner across
   the week, with per-day and per-week calorie totals. Saved to
   `localStorage`.

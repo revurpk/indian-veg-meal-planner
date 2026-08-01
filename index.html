@@ -45,10 +45,28 @@
       <input id="searchInput" type="search" placeholder="Search recipes or ingredients — try &quot;paneer&quot; or &quot;tomato&quot;…" autocomplete="off">
     </div>
     <div class="filter-row" id="categoryFilters"></div>
-    <div class="filter-row filter-row-cuisines" id="cuisineFilters"></div>
-    <div class="filter-row" id="mealFilters"></div>
-    <div class="filter-row" id="timeFilters"></div>
-    <div class="filter-row filter-row-tags" id="tagFilters"></div>
+
+    <div class="control-bar">
+      <select id="cuisineSelect" class="control-select" aria-label="Cuisine"></select>
+      <select id="timeSelect" class="control-select" aria-label="Maximum total time"></select>
+      <button id="moreFiltersBtn" class="filter-toggle" type="button" aria-expanded="false" aria-controls="advancedFilters">
+        ⚙ More filters <span id="filterBadge" class="filter-badge" hidden>0</span>
+      </button>
+      <button id="clearFiltersBtn" class="clear-filters" type="button" hidden>Clear all</button>
+    </div>
+
+    <div id="advancedFilters" class="advanced-filters" hidden>
+      <div class="filter-group">
+        <div class="filter-group-title">Meal</div>
+        <div class="filter-row" id="mealFilters"></div>
+      </div>
+      <div class="filter-group">
+        <div class="filter-group-title">Good for</div>
+        <div class="filter-row" id="tagFilters"></div>
+      </div>
+    </div>
+
+    <p id="resultCount" class="result-count"></p>
     <div id="recipeGrid" class="recipe-grid"></div>
     <p id="noResults" class="empty-state" hidden>No recipes match your search — try a different ingredient or clear the filters.</p>
   </section>

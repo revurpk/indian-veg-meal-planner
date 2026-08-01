@@ -209,6 +209,7 @@
       const btn = document.createElement("button");
       btn.className = "chip" + (activeCategory === c.id ? " active" : "");
       btn.type = "button";
+      btn.dataset.cat = c.id;
       btn.innerHTML = `<span class="chip-emoji">${c.emoji}</span>${c.label}`;
       btn.addEventListener("click", () => {
         activeCategory = c.id;
@@ -219,22 +220,24 @@
     });
   }
 
-  function renderCuisineFilters() {
-    const el = document.getElementById("cuisineFilters");
-    el.innerHTML = "";
-    // Only offer cuisines that actually have recipes, so the row can't go stale.
-    CUISINES.filter((c) => c.id === "all" || RECIPES.some((r) => r.tags.includes(c.id))).forEach((c) => {
-      const btn = document.createElement("button");
-      btn.className = "chip chip-sm" + (activeCuisine === c.id ? " active" : "");
-      btn.type = "button";
-      btn.textContent = c.label;
-      btn.addEventListener("click", () => {
-        activeCuisine = c.id;
-        renderCuisineFilters();
-        renderRecipeGrid();
-      });
-      el.appendChild(btn);
-    });
+  // Cuisine and max-time are single-choice with many options, so they live in
+  // compact dropdowns rather than long chip rows that dominated the page.
+  function renderCuisineSelect() {
+    const el = document.getElementById("cuisineSelect");
+    // Only offer cuisines that actually have recipes, so the list can't go stale.
+    const available = CUISINES.filter((c) => c.id === "all" || RECIPES.some((r) => r.tags.includes(c.id)));
+    el.innerHTML = available
+      .map((c) => `<option value="${c.id}">${c.label}</option>`)
+      .join("");
+    el.value = activeCuisine;
+    el.classList.toggle("is-set", activeCuisine !== "all");
+  }
+
+  function renderTimeSelect() {
+    const el = document.getElementById("timeSelect");
+    el.innerHTML = TIME_FILTERS.map((f) => `<option value="${f.id}">${f.label}</option>`).join("");
+    el.value = activeTimeFilter;
+    el.classList.toggle("is-set", activeTimeFilter !== "all");
   }
 
   function renderMealFilters() {
@@ -249,23 +252,6 @@
         if (activeMealFilters.has(f.id)) activeMealFilters.delete(f.id);
         else activeMealFilters.add(f.id);
         renderMealFilters();
-        renderRecipeGrid();
-      });
-      el.appendChild(btn);
-    });
-  }
-
-  function renderTimeFilters() {
-    const el = document.getElementById("timeFilters");
-    el.innerHTML = "";
-    TIME_FILTERS.forEach((f) => {
-      const btn = document.createElement("button");
-      btn.className = "chip" + (activeTimeFilter === f.id ? " active" : "");
-      btn.type = "button";
-      btn.textContent = f.label;
-      btn.addEventListener("click", () => {
-        activeTimeFilter = f.id;
-        renderTimeFilters();
         renderRecipeGrid();
       });
       el.appendChild(btn);
@@ -295,6 +281,7 @@
     const card = document.createElement("button");
     card.type = "button";
     card.className = "recipe-card";
+    card.dataset.cat = recipe.category;
     const nutrition = computeNutrition(recipe);
     const totalTime = recipe.time.prep + recipe.time.cook;
     card.innerHTML = `
@@ -319,12 +306,59 @@
     grid.innerHTML = "";
     list.forEach((r) => grid.appendChild(buildRecipeCard(r, openRecipeModal)));
     noResults.hidden = list.length > 0;
+
+    const count = document.getElementById("resultCount");
+    count.textContent =
+      list.length === RECIPES.length
+        ? `${RECIPES.length} recipes`
+        : `${list.length} of ${RECIPES.length} recipes`;
+    renderFilterState();
+  }
+
+  // Keeps the "More filters" badge, the Clear all button and the dropdown
+  // highlight in sync with whatever is currently selected.
+  function activeFilterCount() {
+    return (
+      (activeCategory !== "all" ? 1 : 0) +
+      (activeCuisine !== "all" ? 1 : 0) +
+      (activeTimeFilter !== "all" ? 1 : 0) +
+      activeMealFilters.size +
+      activeTagFilters.size +
+      (searchQuery ? 1 : 0)
+    );
+  }
+
+  function renderFilterState() {
+    const advancedCount = activeMealFilters.size + activeTagFilters.size;
+    const badge = document.getElementById("filterBadge");
+    badge.textContent = advancedCount;
+    badge.hidden = advancedCount === 0;
+    document.getElementById("clearFiltersBtn").hidden = activeFilterCount() === 0;
+    document.getElementById("cuisineSelect").classList.toggle("is-set", activeCuisine !== "all");
+    document.getElementById("timeSelect").classList.toggle("is-set", activeTimeFilter !== "all");
+  }
+
+  function clearAllFilters() {
+    activeCategory = "all";
+    activeCuisine = "all";
+    activeTimeFilter = "all";
+    activeMealFilters = new Set();
+    activeTagFilters = new Set();
+    searchQuery = "";
+    document.getElementById("searchInput").value = "";
+    renderCategoryFilters();
+    renderCuisineSelect();
+    renderTimeSelect();
+    renderMealFilters();
+    renderTagFilters();
+    renderRecipeGrid();
   }
 
   // ---------------- Recipe detail modal ----------------
   function openRecipeModal(recipe) {
     const modal = document.getElementById("recipeModal");
     const body = document.getElementById("modalBody");
+    body.dataset.cat = recipe.category;
     const nutrition = computeNutrition(recipe);
     const totalTime = recipe.time.prep + recipe.time.cook;
 
@@ -715,6 +749,23 @@
     renderRecipeGrid();
   });
 
+  // ---------------- Consolidated filter controls ----------------
+  document.getElementById("cuisineSelect").addEventListener("change", (e) => {
+    activeCuisine = e.target.value;
+    renderRecipeGrid();
+  });
+  document.getElementById("timeSelect").addEventListener("change", (e) => {
+    activeTimeFilter = e.target.value;
+    renderRecipeGrid();
+  });
+  document.getElementById("moreFiltersBtn").addEventListener("click", (e) => {
+    const panel = document.getElementById("advancedFilters");
+    const open = panel.hidden;
+    panel.hidden = !open;
+    e.currentTarget.setAttribute("aria-expanded", String(open));
+  });
+  document.getElementById("clearFiltersBtn").addEventListener("click", clearAllFilters);
+
   // ---------------- Toast ----------------
   let toastTimer = null;
   function showToast(msg) {
@@ -748,10 +799,11 @@
 
   // ---------------- Init ----------------
   renderCategoryFilters();
-  renderCuisineFilters();
+  renderCuisineSelect();
+  renderTimeSelect();
   renderMealFilters();
-  renderTimeFilters();
   renderTagFilters();
+
   renderRecipeGrid();
   renderPlanner();
   renderShoppingList();
